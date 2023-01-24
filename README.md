@@ -1,4 +1,4 @@
-# **Advance Physical Design using openLANE/Sky130**
+# **Advance Physical Design using OpenLANE/Sky130**
 # Contents 
  <div class="toc">
   <ul>
@@ -26,9 +26,9 @@
 	<ul>
         <li><a href="#header-2_3">Cell design and characterization flows</a></li>
       </ul>
-   <ul>
-     <li><a herf="#header-2_4">General timming characterization parameters</a></li>
-    </ul>
+      <ul>
+         <li><a herf="#header-2_4">General timming characterization parameters</a></li>
+     </ul>
 </div>
   
   <div class="toc">
