@@ -1,1 +1,1 @@
-# Advance-Physical-Design-using-openLANE-Sky130
+# Advance Physical Design using openLANE/Sky130
