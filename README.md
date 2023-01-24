@@ -89,3 +89,5 @@
 </div>
 
 # <h1 id="header-1">Day 1 -Inception of open-source EDA, OpenLANE and sky130 PDK</h1>	  
+## <h1 id="header-1_1">How to talk to computers</h1>
+### Introduction to QFN-48 package, chip,core,die and IPs
