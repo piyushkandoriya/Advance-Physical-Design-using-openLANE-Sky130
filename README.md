@@ -28,7 +28,7 @@
       </ul>
    <ul>
      <li><a herf="#header-2_4">General timming characterization parameters</a></li>
- </ul>
+    </ul>
 </div>
   
   <div class="toc">
