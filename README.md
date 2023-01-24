@@ -26,9 +26,10 @@
 	<ul>
         <li><a href="#header-2_3">Cell design and characterization flows</a></li>
       </ul>
-      <ul>
-         <li><a herf="#header-2_4">General timming characterization parameters</a></li>
-     </ul>
+	  <ul>
+        <li><a href="#header-2_4">General timming characterization parameters</a></li>
+      </ul>
+      
 </div>
   
   <div class="toc">
@@ -44,6 +45,6 @@
         <li><a href="#header-2_3">Cell design and characterization flows</a></li>
       </ul>
    <ul>
-     <li><a herf="#header-2_4">General timming characterization parameters</a></li>
+     <li><a herf="#header-2_4"></a></li>
  </ul>
 </div>
