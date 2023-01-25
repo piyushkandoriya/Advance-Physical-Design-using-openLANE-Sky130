@@ -235,3 +235,31 @@ Once the routing is done, we can construct the final layout. This final layout w
 <ul>
 	<li><a>Timing Verification: Here Static Timing Analysis will done</a></li>
 	</ul>	
+
+## Introduction to OPENLANE:
+OPENLANE is an automated RTL to GDSII flow that is composed of several tools such as OpenROAD, Yosys, Magic, Netgen, Fault, CVC SPEF-Extractor, CU-GR, Klayout and a number of scripts used for design exploration and optimization.
+It is started as an Open-source flow for a true Open Source tape-out Experiment.
+striVe is a family of open everything SoCs:
+	<ul>
+	<li><a>Open PDK</a></li>
+	</ul>
+<ul>
+	<li><a>Open EDA</a></li>
+	</ul>	
+	<ul>
+	<li><a>Open RTL</a></li>
+	</ul>	
+### striVe SoC Family
+<img width="376" alt="image" src="https://user-images.githubusercontent.com/123488595/214582995-2ac885d9-c76a-4242-bb9c-b8994679af25.png">
+The main goal of OPENLANE is to produce a clean GDSII with no human intervation (no-human-in-the-loop). 
+here the meaning of clean is that:
+<ul>
+	<li><a>No LVS violations</a></li>
+	</ul>
+<ul>
+	<li><a>No DRC Violations</a></li>
+	</ul>	
+	<ul>
+	<li><a>No timing Violations</a></li>
+	</ul>	
+OPENLANE is tuned for skyWter130nm open PDK. it can be used to harden Macros and chips.there
