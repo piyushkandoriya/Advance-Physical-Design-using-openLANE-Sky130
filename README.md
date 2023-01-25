@@ -310,9 +310,10 @@ To address this issue, we have to limit the lenght of the wire. usually this is 
 	</ul>
 <img width="203" alt="image" src="https://user-images.githubusercontent.com/123488595/214597897-29ee947f-6ab5-4df6-bc81-2944f77895f4.png">
 
-	<ul>
+<ul>
 	<li><a>Add antenna diode cell to leak away charges.(Antenna diodes are provided by the SCL)</a></li>
 	</ul>	
+	
 <img width="77" alt="image" src="https://user-images.githubusercontent.com/123488595/214598376-902b092c-d03c-4178-abc2-2ed0d4621bb8.png">
 With OpenLANE, we took a preventive approach. here we add fake antenna diode next to every cell input after placement. Then run the Antenna checker on the routed layout. If the checker reports a violation on cell input pin, replace the fake diode cell by a real one.
 <img width="272" alt="image" src="https://user-images.githubusercontent.com/123488595/214599628-8c0f2729-2e43-4025-b263-34b6c502654c.png">
