@@ -199,7 +199,30 @@ Global placement is very first stage of the placement where cells are placed ins
 #### Detailed placement
 In detailed placements, we determined the exact route and layers for each netlist. the objective of detailed placement is valid routing, minimize area and meet timing constrains. Additional objective is minimum via and less power.
 
-### Clock tree synthesis
+### Clock tree synthesis (CTS)
 Before routing the signals, we have to route the clock. In the process of clock synthesis, we have distribute the clock to the every sequential elements. for example flipflops, registers, ADC, DAC ete. basically clock netwroks looks likes a tree. where the clock source is roots and the clock elements are end leaves.
 Synthesization should be done in a manner that with minimum skew and in a good shape.To minimize the clock skew by using the low-skew global routing resources for clock signals.Microsemi devices provide various types of global routing resources that significantly reduce skew.Usually a tree is a H tree, X tree etc.
 ![image](https://user-images.githubusercontent.com/123488595/214568639-23e7cc83-1f6a-4abd-b1d3-a8a251a07450.png)
+
+### Routing
+After routing the clock, the signal routing comes. Making physical connections between signal pins using metal layers are called Routing. Routing is the stage after CTS and optimization where exact paths for the interconnection of standard cells and macros and I/O pins are determined.
+There are two types of nets in VLSI systems that need special attention in routing: 
+<ul>
+	<li><a>Clock nets</a></li>
+	</ul>
+<ul>
+	<li><a>Power/Ground nets</a></li>
+	</ul>	
+The sky130 PDK defines the 6 routing leyers. the lowest leyer is called local interconnect layer (titanium nitride layer). Other five layers are alluminium layers.
+
+![metal_stack-900x795](https://user-images.githubusercontent.com/123488595/214572611-63a2130c-0901-454e-9188-1eddacdd86ca.png)
+
+
+In the proccess of routing, metal trackes forms a routing grids and these grids are huge. so, devide and conquer approach is use for routing.
+The two types of routing is used:
+<ul>
+	<li><a>Global routing: Generates the routing guides</a></li>
+	</ul>
+<ul>
+	<li><a>Detailed Routing: Uses the routing guides to implement the actual wiring</a></li>
+	</ul>		
