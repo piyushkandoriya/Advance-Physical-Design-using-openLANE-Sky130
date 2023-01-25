@@ -120,3 +120,40 @@ Between apps or software (in our mobilephones and computers or laptops) and Hard
 when we gives the inputs from the software, inputs is in the C,C++,JAVA etc. languages. Hardware not understand this language. So, this inputs goes throuth the system software cahnnel, where O.S. handles the input/output operations, it allocates the memory to for the codes and low level systems functions are there in O.S. Then program goes to the compiler, where program will compile and generate the HDL program.This HDL program is basically the sets of Instructions which can hardware is able to understand. The instructions are basically depends on what kind of hardware we are using. For example if we are using Mips processor then instruction formaate will be according to the Mips processor, if Hardware is RISC-V then the instruction formate will be according to the RISC-V and similerly for Arm and intel processors also.
 	
 This sets of instrusctions is now given to the Assembler. here according to the instruction set, assembler will generate the Binary code (contains only 0s and 1s). this binary code can be understandable for hardware. And according to this code, hardware will gives the output. 
+	
+## how to design Digital ASIC?
+To design Digital ASIC, few tools or things which are required from the day one.
+These are
+	<ul>
+        <li><a>RTL Design</a></li>
+      </ul>
+      <ul>
+        <li><a>EDA tools</a></li>
+      </ul>
+	<ul>
+        <li><a> PDK data</a></li>
+      </ul>
+	
+### what is RTL design?
+In digital circuit design, register-transfer level (RTL) is a design abstraction which models a synchronous digital circuit in terms of the flow of digital signals (data) between hardware registers, and the logical operations performed on those signals.for this designs many open sorces are available. like, librecores.org, opencores.org, github.com, etc...
+	
+### What is EDA tools?
+The term Electronic Design Automation (EDA) refers to the tools that are used to design and verify integrated circuits (ICs), printed circuit boards (PCBs), and electronic systems, in general. many open sorces tools are available like Qflow, OpenROAD, OpenLANE, etc...
+	
+### What is PDK Data?
+PDK is process design kit. It is interface between FAB and design. This data is collections of files like,
+	<ul>
+        <li><a>process design rules: DRC, LVS, REX</a></li>
+      </ul>
+      <ul>
+        <li><a>Digital standerd cell libreries</a></li>
+      </ul>
+	<ul>
+        <li><a>i/o librerirs </a></li>
+      </ul>
+	<ul>
+        <li><a> etc..... </a></li>
+      </ul>
+which are used to model a fabrication process for the EDA tools used to design an ICs.
+for example, in 2020, google release the open source PDK for FOSS 130nm production with the skywater technology. 
+	
