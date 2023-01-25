@@ -121,7 +121,7 @@ when we gives the inputs from the software, inputs is in the C,C++,JAVA etc. lan
 	
 This sets of instrusctions is now given to the Assembler. here according to the instruction set, assembler will generate the Binary code (contains only 0s and 1s). this binary code can be understandable for hardware. And according to this code, hardware will gives the output. 
 	
-## how to design Digital ASIC?
+## <h1 id="header-1_2">How to design Digital ASIC?</h1>
 To design Digital ASIC, few tools or things which are required from the day one.
 These are
 	<ul>
@@ -324,3 +324,5 @@ It involves the interconnect RC Extraction(DEF2SPEF) from the routed layout, fol
 ### Physical Verification (DRC and LVS)
 Magic is used for design Rules checking and SPICE Extraction from Layout.
 Magic and Netgen are used for LVS.
+
+## <h1 id="header-1_3">Open source EDA tools</h1>
