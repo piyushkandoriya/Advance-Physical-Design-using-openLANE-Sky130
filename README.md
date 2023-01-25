@@ -326,3 +326,4 @@ Magic is used for design Rules checking and SPICE Extraction from Layout.
 Magic and Netgen are used for LVS.
 
 ## <h1 id="header-1_3">Open source EDA tools</h1>
+### OpenLANE Dictonary Structure in detail   
