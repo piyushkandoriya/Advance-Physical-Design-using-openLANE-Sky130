@@ -185,10 +185,16 @@ To address the electromagnetization problem, power distribution network uses upp
 In this process, we place the gate level netlist on the floor planning rows, alligned with the sites. cells should be placed very closed to eachother to reduce the interconnnect delay.
 Usually placement is done in 2 steps:
 <ul>
-	<li><a>Global</a></li>
+	<li><a>Global placement</a></li>
 	</ul>
 <ul>
-	<li><a>Detailed</a></li>
+	<li><a>Detailed placement</a></li>
 	</ul>	
+
+![image](https://user-images.githubusercontent.com/123488595/214510218-dd7cc40c-c627-47cb-ac9a-0fc2a484c08b.png)
+
+#### Global placement
+Global placement is very first stage of the placement where cells are placed inside the core area for the first time looking at the timing and congestion. Global Placement aims at generating a rough placement solution that may violate some placement constraints while maintaining a global view of the whole Netlist.
 	
-	
+#### Detailed placements
+In detailed placements, we determined the exact route and layers for each netlist. the objective of detailed placement is valid routing, minimize are and meet timing constrains. additional objective is minimum via and less power.
