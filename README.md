@@ -270,4 +270,11 @@ OPENLANE is tuned for skyWter130nm open PDK. it can be used to harden Macros and
 <ul>
 	<li><a>interactive : here we can run comamds and steps one by one.</a></li>
 	</ul>	
+
 It has  large number of design examples(43 designs with their best configurations).
+
+## OpenLANE ASIC Flow (Detailed)
+<img width="386" alt="Screenshot 2023-01-25 195527" src="https://user-images.githubusercontent.com/123488595/214588975-3737d250-704b-45d6-aa0b-b0ceb6639030.png">
+
+The design exploration utility is also used for regression testing(CI).
+we run OpenLANE on ~ 70 designs and compare the results to the best known ones. 
