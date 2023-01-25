@@ -226,3 +226,12 @@ The two types of routing is used:
 <ul>
 	<li><a>Detailed Routing: Uses the routing guides to implement the actual wiring</a></li>
 	</ul>		
+
+### Sign off
+Once the routing is done, we can construct the final layout. This final layout will goes under the verification. Two types of verifications are there:
+<ul>
+	<li><a>Physical verification: Here design rule checking will done and it will check the final layout and owners layout</a></li>
+	</ul>
+<ul>
+	<li><a>Timing Verification: Here Static Timing Analysis will done</a></li>
+	</ul>	
