@@ -155,5 +155,40 @@ PDK is process design kit. It is interface between FAB and design. This data is 
         <li><a> etc..... </a></li>
       </ul>
 which are used to model a fabrication process for the EDA tools used to design an ICs.
-for example, in 2020, google release the open source PDK for FOSS 130nm production with the skywater technology. 
+for example, in 2020, google release the open source PDK for FOSS 130nm production with the skywater technology. But right now it is at cutting age of the 5 nm also. But in many applications, the advance node is not required, and the cost of advanced node is also high as compared to 130nm processors.
+This 130nm processors are also fast processor.
+for example,
+	<ul>
+		<li><a> intel: P4EE @3.46 GHz(Q4'o4)</a></li>
+	</ul>
+	<ul>
+		<li><a>sky130_OSU (single cycle RV32i CPU)
+			pipeline version can achieve more than 1 GHz clock</a></li>
+	</ul>
+	
+## Simplified RTL to GDSII flow
+<img width="264" alt="image" src="https://user-images.githubusercontent.com/123488595/214504937-264c46d8-f6c7-4b8e-8f8d-87b216f8a067.png">
+### Synthesis
+In the synthesis, the design RTL is translated to a circuit out from the SCL. The resultant circuit is describes in HDL	and usualy refered to the gate level netlist. the gate level netlist is functionaly equivelent to the RTL.
+"standard Cells" have regular layouts.
+	
+### Floor planning and Power planning
+The main objective here is that to plan silicon area and distribute the power to the whole circuit.
+In the chip floor planning, the partition chip die between different system building blocks and place the i/o pads. In micro floor planning, we define the dimensions, pin locations, rows.
+![20-Figure1 3-1](https://user-images.githubusercontent.com/123488595/214507829-d049bb33-d11b-427e-818c-85a8c43f2f4f.png)
+
+In power planning, the power network is connstructed. tipically, the chip is power by multiple VDD and GND. so, total components are connected to power supply horizontaly and vertically by metal streps. here parallel structures are used to reduce the resistance.
+To address the electromagnetization problem, power distribution network uses upper metal leyers, which are thicker than lower metal layers. Hence have less resistance.
+![Picture1](https://user-images.githubusercontent.com/123488595/214508763-040d992c-e41b-40f1-b9d0-b1553888a8e1.png)
+
+### Placement
+In this process, we place the gate level netlist on the floor planning rows, alligned with the sites. cells should be placed very closed to eachother to reduce the interconnnect delay.
+Usually placement is done in 2 steps:
+<ul>
+	<li><a>Global</a></li>
+	</ul>
+<ul>
+	<li><a>Detailed</a></li>
+	</ul>	
+	
 	
