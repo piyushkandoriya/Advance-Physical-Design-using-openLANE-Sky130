@@ -327,3 +327,5 @@ Magic and Netgen are used for LVS.
 
 ## <h1 id="header-1_3">Open source EDA tools</h1>
 ### OpenLANE Dictonary Structure in detail   
+Here we are working in Sky130_fd_sc_hd varient. where, "sky130" is process name or node name."fd" is a foundary name (skyWater foundary)."sc" means standerd cell librery files and the last one "hd" stands for high density(basically one type of varient). 
+ Sky130_fd_sc_hd varient contains many technology files like verilog, spice, techlef, meglef,mag,gds,cdl,lib,lef,etc. (techlef file contains the layer information).
