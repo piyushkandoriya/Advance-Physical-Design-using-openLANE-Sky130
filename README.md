@@ -278,3 +278,48 @@ It has  large number of design examples(43 designs with their best configuration
 
 The design exploration utility is also used for regression testing(CI).
 we run OpenLANE on ~ 70 designs and compare the results to the best known ones. 
+### DFT(Design for Test)
+it perform scan inserption, automatic test pattern generation, Test patterns compaction, Fault coverage, Fault simulation. 
+<img width="439" alt="image" src="https://user-images.githubusercontent.com/123488595/214592208-63cb6c82-1241-413f-b7f9-3d94c1641d6a.png">
+
+After that physical implementation is done by OpenROAD app. physical implementation involves the several steps: 
+	<ul>
+	<li><a>Floor/Power Planning</a></li>
+	</ul>
+<ul>
+	<li><a>End Decoupling Capacitors and Tap cells insertion</a></li>
+	</ul>	
+	<ul>
+	<li><a>Placements: Global and Detailed</a></li>
+	</ul>	<ul>
+	<li><a>Post Placement Optimization</a></li>
+	</ul>
+<ul>
+	<li><a>Clock Tree synthesis (CTS)</a></li>
+	</ul>	
+	<ul>
+	<li><a>Routing: Global and Detailed</a></li>
+	</ul>	
+Every time the netlist is modified.(CTS modifies the netlist and Post Placements optimization also modifies the netlist).so for that verification must be performed. The LCE(yosys) is used to formally confirm that the function did not change after modifying the netlist.  
+### Dealing with antenna rules Violation:	
+when a metal wire segment is fabricated, it can act as antenna.as an antenna, it collect charges which can demaged  the transister gates during the fabrication.
+<img width="242" alt="image" src="https://user-images.githubusercontent.com/123488595/214597006-5c0808dc-e94e-4f52-96da-c90e191a7d20.png">
+To address this issue, we have to limit the lenght of the wire. usually this is the job of the router. If router fails to do this, then there are two solutions:
+	<ul>
+	<li><a>Bridging attaches a higher layer intermediary</a></li>
+	</ul>
+<img width="203" alt="image" src="https://user-images.githubusercontent.com/123488595/214597897-29ee947f-6ab5-4df6-bc81-2944f77895f4.png">
+
+	<ul>
+	<li><a>Add antenna diode cell to leak away charges.(Antenna diodes are provided by the SCL)</a></li>
+	</ul>	
+<img width="77" alt="image" src="https://user-images.githubusercontent.com/123488595/214598376-902b092c-d03c-4178-abc2-2ed0d4621bb8.png">
+With OpenLANE, we took a preventive approach. here we add fake antenna diode next to every cell input after placement. Then run the Antenna checker on the routed layout. If the checker reports a violation on cell input pin, replace the fake diode cell by a real one.
+<img width="272" alt="image" src="https://user-images.githubusercontent.com/123488595/214599628-8c0f2729-2e43-4025-b263-34b6c502654c.png">
+	
+### Static Timing analysis(STA)
+It involves the interconnect RC Extraction(DEF2SPEF) from the routed layout, followed by STA on OpenSTA(OpenROAD) tool. resulting report will shows the timing violations if any violations is there.
+	
+### Physical Verification (DRC and LVS)
+Magic is used for design Rules checking and SPICE Extraction from Layout.
+Magic and Netgen are used for LVS.
