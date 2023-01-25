@@ -249,6 +249,7 @@ striVe is a family of open everything SoCs:
 	<ul>
 	<li><a>Open RTL</a></li>
 	</ul>	
+	
 ### striVe SoC Family
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/123488595/214582995-2ac885d9-c76a-4242-bb9c-b8994679af25.png">
 The main goal of OPENLANE is to produce a clean GDSII with no human intervation (no-human-in-the-loop). 
@@ -262,4 +263,11 @@ here the meaning of clean is that:
 	<ul>
 	<li><a>No timing Violations</a></li>
 	</ul>	
-OPENLANE is tuned for skyWter130nm open PDK. it can be used to harden Macros and chips.there
+OPENLANE is tuned for skyWter130nm open PDK. it can be used to harden Macros and chips.there is two mode of operation
+<ul>
+	<li><a>Autonomus : it is the push botton flow. with the push botton , it is a some time base design and due to this push botton, we get final GDSII </a></li>
+	</ul>
+<ul>
+	<li><a>interactive : here we can run comamds and steps one by one.</a></li>
+	</ul>	
+It has  large number of design examples(43 designs with their best configurations).
