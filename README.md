@@ -493,3 +493,27 @@ And the power planning is shown below,
 
 ### Pin placement and Logic floor planning considerations
 #### 5) Pin Placement
+Lets take below designs for example that needs to implemented.
+	
+<img width="302" alt="image" src="https://user-images.githubusercontent.com/123488595/214858342-5e11cfc4-e283-4a0b-9def-1d2001ac11fe.png">
+
+Both the sections has different inputs like Din1 and Din2 and operated from different clocks like clock 1 and clock 2. along with that we have preplaced cells as well. So, basically now we have 4 input ports and 3 output ports.
+
+let's have one more design that needs to be implemented. this types of circuits are very much helpful to understand the timing analysis of inter clocks. 
+
+now complete design becomes like given below which has 6 input ports and 5 output ports. it is called the 'Netlist'.
+
+<img width="256" alt="image" src="https://user-images.githubusercontent.com/123488595/214859546-e01e96f8-f8ae-4d32-b850-e866cc884e95.png">
+	
+Let's put this netlist in the core which we have designed before and let's try to fill this empty area between core and die with the pin information. The frontend team who decides the netlist input and output and the backend team who done the pin placements. So according to the pin placements, we have to locate the preplaced blocks nearer to the inputs of the preplaced blocks.
+	
+<img width="361" alt="image" src="https://user-images.githubusercontent.com/123488595/214863991-eb0bd738-d4e8-43c9-9975-b89d1ea3d1da.png">
+
+Here one thing that we noticed is that clock-in and clock-out pins are bigger in size as compared to input and output pins. reason behind this is that, input clocks are conntinuously provides the signal to the every elements of the chip and output clock should out the signal as fast as possible. So, we need least resistance path for the clocks inputs and clocks outputs. So, bigger the size, lower the resistance.
+	
+One more thing is need to take care about is that, this pin placement area is blocked for routing and cell placements. so we nned to do logical  cell placement blockage. this blockage is shoown in above image in between pins.
+	
+So, floor plan is ready for Placement and Routing step.
+
+### Steps to run floorplan using OpenLANE
+#### 6)Placement and routing 
