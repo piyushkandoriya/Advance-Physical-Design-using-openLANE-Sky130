@@ -396,3 +396,20 @@ And in the report, we can see when the actual synthesis has done. and the actual
 
 # <h2 id="header-2">Day 2 -Good floorplanning Vs Bad floorplanning and introduction to library cells</h2>	 
 ## <h2 id="header-2_1"> Chip floorplanning considerations</h2>
+### Utilization factor and aspect ratio
+#### 1) defining the width and height of core and Die
+![core-to-ioclearence](https://user-images.githubusercontent.com/123488595/214812877-3a95861f-095f-4ae3-aaeb-1a1cf744ea71.jpeg)
+let's begin with netlist( Netlist describes the connectivity of an electronic designs). Considering a netlist with 2 flops and 2 gates.
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/214813921-eaf8a832-f81a-407f-9872-9c26418504f0.png">
+
+lets giving the height and width of standerd cell is 1 unit. So, area of standerd cell is 1 square unit. And assuming the same area for the flip flops also.
+	
+Now lets calculate the area occupied by the netlist on a silicon wafer by arranging them together. The total area occupied by netlist in silicon wafer is 4 square units.
+	
+<img width="118" alt="image" src="https://user-images.githubusercontent.com/123488595/214814862-ed648466-d3e7-439d-9bbd-5e6a9e35dba9.png">
+
+#### what is the core and die?
+A 'core' is the section of the chip where the fundamental logic of the design is placed.
+	
+A 'Die', which is consist of core, is small semiconductor material specimen on which the fundamentak circuits is fabricated.
+![image](https://user-images.githubusercontent.com/123488595/214816013-c1bdb7f5-5e79-4c26-a944-d6de35671c47.png)
