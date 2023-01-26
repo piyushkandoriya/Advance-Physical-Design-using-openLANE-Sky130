@@ -350,4 +350,6 @@ Now, here we are ready to execute the command.
 Now, if we are going into  the design folder in openlane, there are nearly 30-40 designs are already builted. Out of them we can open any of the design. for example, here we are opening the picorv32a.v design.
 In  this design we can see many files are available. i.e., scr, config.tcl, etc. This config.tlc file contains every details about the design. for example, details about enrollment, clock period, clock period port etc.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214754184-bfa2b6d1-4535-4cba-a1d8-adc19fb97077.png">
+Here we can see that the time period is set to the 5.00 nsec. but is we see in the openlane sky130_fd_sc_hd folder, the period is set about 22 nsec. so it is not override to the main file. If it override then give first priority to the main folder.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214755677-28582a34-c102-435e-92e6-87ef0c14542c.png">
 
