@@ -517,3 +517,38 @@ So, floor plan is ready for Placement and Routing step.
 
 ### Steps to run floorplan using OpenLANE
 #### 6)Placement and routing 
+Before run the floorplanning, we required some switches for the floorplanning. these we can get from the configuration from openlane.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214902095-52b164f2-1a0a-4a98-b8fd-c281a7f216be.png">
+
+Here we can see that the core utilization ratio is 50% (bydefault) and aspect ratio is 1 (bydefault). similarly other information is also given. But it is not neccessory to take these values. we need to change these value as per the given requirments also. 
+	
+Here FP_PDN files are set the power distribution network. These switches are set in the floorplane stage bydefault in OpenLANE.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214906731-4768f143-e9ea-4b24-82dd-2c9c972c9649.png">
+
+Here, (FP_IO MODE) 1, 0 means pin positioning is random but it is on equal distance.
+
+In the OpenLANE lower priority is given to system default (floorplanning.tcl), the next priority is given to config.tcl and then priority is given to PDK varient.tcl (sky130A_sky130_fd_sc_hd_congig.tcl).
+
+Now we see, with this settings how floorplan run.
+	
+### Reviewing floorplan files and steps to view floorplan
+In the run folder, we can see the connfig.tcl file. this file contains all the configuration that are taken by the flow. if we open the config.tcl file, then we can see that which are the parameters are accepted in the current flow. 
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214913959-ae328082-9f18-42fb-b405-6ccefeb95ae7.png">
+
+here we can see that, the core utilization is 35%, aspect ratio is 1 and core margin is taken as 0. while in default the core utilization is 50%. this is the issue. because this design is override the system. but it is the taken from PDK varient.tcl file. so priority vise it is true. 
+	
+To watch how floorplane looks, we have to go in the results. in the result, one def( design exchange formate) file is available. if we open this file, we can see all information about die area (0 0) (660685 671405), unit distance in micron (1000). it means 1 micron means 1000 databased units. so 660685 and 671405 are databased units. and if we devide this by 1000 then we can get the dimensions of chips in micrometer. 
+
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/214918258-f3bc54e7-644d-491b-ae74-737f510fc3da.png">
+
+so, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
+
+To see the actual layout after the flow, we have to open the magic file by adding the command  magic -T Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../temp/merged.lef def read picorv32a.floorplan.
+ 
+And then after pressing the enter, Magic file will open.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214920878-ecb2c0a6-4c7c-4d9c-9d48-cb8de2ddc8b3.png">
+
+### Reviewing floorplan layot with magic.
