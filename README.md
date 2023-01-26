@@ -464,3 +464,32 @@ To solve this problem,, we have to put De-coupling capacitor in parallel with th
 <img width="278" alt="image" src="https://user-images.githubusercontent.com/123488595/214849500-510229d7-5859-43eb-aed7-936b758f395b.png">
 
 ### Power Planning
+#### 4) How to do power planning?
+Up to here, we have taken care of local communication. Now let consider that local circuitory as a black box and it can be repeat multiple times and power supply is also connected to all of them as shown below,
+
+<img width="291" alt="image" src="https://user-images.githubusercontent.com/123488595/214851756-38f569d9-46ee-4150-813b-f9fd79e4c5e9.png">
+
+Now 16 bit bus has to retain the same signal from driver to the load. so it should get the sufficient power from the supply. But at this bus, there is no de-coupling capacitor is available because it is not physible to put capacitor at all over the place. now, power supply is far away from the bus, that is why some drop between them will definalty occurs.
+	
+Let consider this 16 bit bus connected to inverter. So, all capacitor are initially charged will get discharged and vice-versa due to inverter.
+	
+<img width="322" alt="image" src="https://user-images.githubusercontent.com/123488595/214853264-d023b43c-3e2b-401b-a699-c3d6bcdf6199.png">
+
+But the problem is occurs due to all capacitor is connected to the single ground. This will cause a bump in 'ground' tap point during discharging.
+	
+<img width="306" alt="image" src="https://user-images.githubusercontent.com/123488595/214854259-e538ca11-c396-4fb3-8c72-28c2d5f59d2e.png">
+
+Same problem will occurse during the charging time also. at that time lowering of voltage occurse at 'Vdd' tap point.
+	
+<img width="320" alt="image" src="https://user-images.githubusercontent.com/123488595/214854772-0daf74b3-bfae-4fa9-9130-ae81840576e7.png">
+
+The solution of the problem is use multiple power supply. So, every block will take charge from neartest power supply and similarly dump the charge to the nearer ground. this type of power supply is called mesh.
+
+<img width="284" alt="image" src="https://user-images.githubusercontent.com/123488595/214855314-308e092e-a3d1-4ef4-97fa-9508f01605e7.png">
+
+And the power planning is shown below,
+
+<img width="362" alt="image" src="https://user-images.githubusercontent.com/123488595/214856244-a322a374-660c-454b-b252-8d40fa1fd8c7.png">
+
+### Pin placement and Logic floor planning considerations
+#### 5) Pin Placement
