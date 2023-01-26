@@ -397,7 +397,7 @@ And in the report, we can see when the actual synthesis has done. and the actual
 # <h2 id="header-2">Day 2 -Good floorplanning Vs Bad floorplanning and introduction to library cells</h2>	 
 ## <h2 id="header-2_1"> Chip floorplanning considerations</h2>
 ### Utilization factor and aspect ratio
-#### 1) defining the width and height of core and Die
+#### 1)defining the width and height of core and Die
 ![core-to-ioclearence](https://user-images.githubusercontent.com/123488595/214812877-3a95861f-095f-4ae3-aaeb-1a1cf744ea71.jpeg)
 let's begin with netlist( Netlist describes the connectivity of an electronic designs). Considering a netlist with 2 flops and 2 gates.
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/214813921-eaf8a832-f81a-407f-9872-9c26418504f0.png">
@@ -428,3 +428,16 @@ practically, we don't go with 100% uti;ization. practically utilization factor i
 #### Aspect Ratio
 it is defined as (height)/ (width). here in above example the aspect ratio is 1.
 	
+### Concept of pre-placed cells
+#### 2) Define locations of preplaced cells
+to define the preplaced cells, let's take a combinational logic i.e., mux, multiplier, clock devider, etc. and assuming that the output of the circuit is huge and assuming that the circuit has some 100k gates. so let devides in two blocks of 50k gates.
+
+<img width="366" alt="image" src="https://user-images.githubusercontent.com/123488595/214839792-c8f43ba0-18ca-443b-a75e-790406bc5f05.png">
+
+This both blocks are implimented separatly. Now, extending the input and output pins from the both blocks. now, let's detached these box. we will black box the boxes and detached them. After black boxing, the upper portion is invisible from the top or invisible to the one , who is looking into the main netlist. now we make separate them out.
+	
+<img width="324" alt="image" src="https://user-images.githubusercontent.com/123488595/214841034-cdf45413-3402-4fa4-b2f3-864f2bb5a3d3.png">
+
+This blocks are implemented in netlist once and then we can reuse it multiple time. Similarly, there are other modules or IPs also readily available.i.e.,memory, clock gating cell, comparater, mux. these all are part of the top level netlist.They recieve some signals, they perform some functions, they deliver the outputs but the functionality of the cell is implemented only once. That what we called as preplaced cells.
+	
+The arrangement of these ip''s in a chip is refferd as floorplanning.These IP's have user-defined locations, and hence are placed in chip before automated placement and routing are called "preplacement cells".These cells are place din such fashion that, the placement and routing tool not touch the location of the cell.
