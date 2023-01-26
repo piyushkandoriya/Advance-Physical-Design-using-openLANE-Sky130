@@ -557,6 +557,7 @@ In the layout we can see that, input output pins are at equal distance.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214925799-51b74403-022f-45a3-bef1-af63bb9f4180.png">
 
 after selecting (To select object, first click on the object and then press 's' from keyboard. the object will hight lited. to zoom in the object, click on the object and then press 'z' and for zoom out press 'sft+z') one input pin, if we want to check the location or to know at on which layer it is available, we have to open tkcon window and type "what". it will shows all the details about that perticular pin.
+	
 <img width="256" alt="image" src="https://user-images.githubusercontent.com/123488595/214927377-fb000f07-9c01-42a7-9752-75e41a064aca.png">
 <img width="738" alt="image" src="https://user-images.githubusercontent.com/123488595/214927471-148b9473-2b6c-417c-8dad-a08ce3a23d33.png">
 
@@ -565,6 +566,7 @@ so, it show that the pin is in the metal 3.similarly doing for the vertical pins
 <img width="397" alt="image" src="https://user-images.githubusercontent.com/123488595/214928363-e058f29b-8a86-4a97-a50f-a68a2b263981.png">
 
 Along with the side rows,the Decap cells are arranged at the border of the side rows.
+	
 <img width="121" alt="image" src="https://user-images.githubusercontent.com/123488595/214929406-c05aba68-2dbe-4e53-8a99-7339c642b730.png">
 
 Another cells also placed here, which is a tap cells. these cells are meant to avoide the latch-up problems in the CMOS devices. it connect N-well to the Vdd and substrate to the Ground. these tap cells are placed at diagonally equal distance.
