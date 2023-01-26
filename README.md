@@ -546,10 +546,35 @@ To watch how floorplane looks, we have to go in the results. in the result, one 
 
 so, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
 
-To see the actual layout after the flow, we have to open the magic file by adding the command  magic -T Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../temp/merged.lef def read picorv32a.floorplan.
+To see the actual layout after the flow, we have to open the magic file by adding the command magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def 
  
 And then after pressing the enter, Magic file will open. here we can see the layout.
 
 <img width="722" alt="image" src="https://user-images.githubusercontent.com/123488595/214922787-863a11a5-a0c6-46b1-aa78-0d1ee50ed8b6.png">
 
 ### Reviewing floorplan layot with magic.
+In the layout we can see that, input output pins are at equal distance.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214925799-51b74403-022f-45a3-bef1-af63bb9f4180.png">
+
+after selecting (To select object, first click on the object and then press 's' from keyboard. the object will hight lited. to zoom in the object, click on the object and then press 'z' and for zoom out press 'sft+z') one input pin, if we want to check the location or to know at on which layer it is available, we have to open tkcon window and type "what". it will shows all the details about that perticular pin.
+<img width="256" alt="image" src="https://user-images.githubusercontent.com/123488595/214927377-fb000f07-9c01-42a7-9752-75e41a064aca.png">
+<img width="738" alt="image" src="https://user-images.githubusercontent.com/123488595/214927471-148b9473-2b6c-417c-8dad-a08ce3a23d33.png">
+
+so, it show that the pin is in the metal 3.similarly doing for the vertical pins, we find that this pin is at metal 2.
+
+<img width="397" alt="image" src="https://user-images.githubusercontent.com/123488595/214928363-e058f29b-8a86-4a97-a50f-a68a2b263981.png">
+
+Along with the side rows,the Decap cells are arranged at the border of the side rows.
+<img width="121" alt="image" src="https://user-images.githubusercontent.com/123488595/214929406-c05aba68-2dbe-4e53-8a99-7339c642b730.png">
+
+Another cells also placed here, which is a tap cells. these cells are meant to avoide the latch-up problems in the CMOS devices. it connect N-well to the Vdd and substrate to the Ground. these tap cells are placed at diagonally equal distance.
+
+<img width="335" alt="image" src="https://user-images.githubusercontent.com/123488595/214930507-60abe484-3a08-426f-a609-2203d412d37b.png">
+
+In the floorplane, standerd cells are not placed but here standerd cells are available in the left side of the floorplan. we can see few boxes are there.
+
+<img width="362" alt="image" src="https://user-images.githubusercontent.com/123488595/214931774-2097438f-183e-4358-9954-d1d0c858d5c7.png">
+
+here we can see that first standerd cells is for buffer 1. similarly other cells are for buffer 2, AND gate etc.
+
+
