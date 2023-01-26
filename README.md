@@ -355,5 +355,6 @@ Here we can see that the time period is set to the 5.00 nsec. but is we see in t
 
 Now, in openlane, we are going to  run the synthesis, but before synthesis, we have to prepare design setup stage.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214756580-52cc86ed-874d-4025-bcaa-37cc0629de9a.png">
+
 so, here it is shown that preparation is completed.
 
