@@ -379,8 +379,16 @@ Now, cmds.log file takes all the record of the commands, what we have fab.
 	
 Now coming to the openlane, we are going to run the synthesis. It will take some 3-4 mnts to run the synthesis and finally synthesis will complited.
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/214799290-906f704e-5fe3-4cac-989a-9d809acc1809.png">
+
+From the data of synthesis, total number of counter D_flip-flops is 1613. and the number of cells is 17876.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214804529-510e50db-0153-4024-9ba2-f4b523f4d1e0.png">
 	
+So, the flop ratio = (number of flip flops)/(number of total cell).
+So, the flop ratio is 9.023%.
 
-
-
+Before run, we saw that the result folder is empty. but now, after running the synthesis, we can see that all the mapping have been done by ABC.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214806172-4e595c85-a0ac-4b4a-9a85-408806be9434.png">
+	
+And in the report, we can see when the actual synthesis has done. and the actual statistics synthesis report is showing below, which is same as what we have seen before.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214807555-eab9d596-c396-4c4f-a28d-4773f3e08bdc.png">
 
