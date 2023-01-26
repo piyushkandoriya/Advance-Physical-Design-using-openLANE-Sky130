@@ -342,3 +342,12 @@ Sky130_fd_sc_hd varient contains many technology files like verilog, spice, tech
 when we enter in the OpenLANE, we have to use flow.tcl because as a name says, it will goes with the flow using the script. And by using interactive switch, we will do step by step process. without interactive switch, it will run complete flow from RTL to GDSII.
 Now OpenLANE is open and we can see that prompt will change now.
 <img width="992" alt="image" src="https://user-images.githubusercontent.com/123488595/214751196-c0bf70a0-b862-4452-89a2-2af81a89e86b.png">
+
+Now we have to input all the packages which required to run the flow.
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/214752282-34a58730-3c57-44d0-b95d-f738a0e6b9a7.png">
+Now, here we are ready to execute the command.
+	
+Now, if we are going into  the design folder in openlane, there are nearly 30-40 designs are already builted. Out of them we can open any of the design. for example, here we are opening the picorv32a.v design.
+In  this design we can see many files are available. i.e., scr, config.tcl, etc. This config.tlc file contains every details about the design.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214754184-bfa2b6d1-4535-4cba-a1d8-adc19fb97077.png">
+
