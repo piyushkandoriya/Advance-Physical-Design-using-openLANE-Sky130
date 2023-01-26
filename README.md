@@ -440,4 +440,27 @@ This both blocks are implimented separatly. Now, extending the input and output 
 
 This blocks are implemented in netlist once and then we can reuse it multiple time. Similarly, there are other modules or IPs also readily available.i.e.,memory, clock gating cell, comparater, mux. these all are part of the top level netlist.They recieve some signals, they perform some functions, they deliver the outputs but the functionality of the cell is implemented only once. That what we called as preplaced cells.
 	
-The arrangement of these ip''s in a chip is refferd as floorplanning.These IP's have user-defined locations, and hence are placed in chip before automated placement and routing are called "preplacement cells".These cells are place din such fashion that, the placement and routing tool not touch the location of the cell.
+The arrangement of these ip's in a chip is refferd as floorplanning.These IP's have user-defined locations, and hence are placed in chip before automated placement and routing are called "preplacement cells".These cells are place din such fashion that, the placement and routing tool not touch the location of the cell.
+
+![image](https://user-images.githubusercontent.com/123488595/214843837-bbdba3e6-5783-4a8c-bb34-39881337adca.png)
+
+Let consider memory as a preplaced cells as a block 'a', block 'b' and block 'c'. Memory of any device is implemented once and reused multiple times. these preplaced cells are located as per the design bacckground. the location of the cells are never touched.
+
+### De-coupling capacitors
+#### 3) surround pre-placed cells with Decoupling capacitors
+
+Let consider some circuit, which is part of the blocks which were defined above. When some gate (let consider AND gate) switched from 0 to 1 ot 1 to 0, considered amount of the switching current required because of small capacitance is available there. this capacitor should be completely charged to represent logic 1 and completly discharged to represent logic 0. the required amount of the charge is suplied from the Vdd and absorb from the Vss. during supplying the current, wire has some drop of voltage due to resistence and inductunce of the physical wire.
+
+<img width="301" alt="image" src="https://user-images.githubusercontent.com/123488595/214847108-8f9747bf-1e44-49f7-9d70-6bba5594f1ef.png">
+
+So, due to this if ideal logic 1 = 1 volt then here practically it can be less then 1 volt i.e., 0.97 volts (Vdd'). So, for any signal to be considered as Logic '0' and '1' in the NM low and NM high range. It is danger case.
+	
+<img width="334" alt="image" src="https://user-images.githubusercontent.com/123488595/214848285-1f8b322e-ecfc-4941-813f-2f65f4c4149e.png">
+
+To solve this problem,, we have to put De-coupling capacitor in parallel with the circuit. Every time the circuit switches, it draws current from Cd, whereas, the RL network is used to replacenish the charge into Cd.
+	
+<img width="296" alt="image" src="https://user-images.githubusercontent.com/123488595/214848866-96646aa8-2073-4467-9428-b014761add21.png">
+	
+<img width="278" alt="image" src="https://user-images.githubusercontent.com/123488595/214849500-510229d7-5859-43eb-aed7-936b758f395b.png">
+
+### Power Planning
