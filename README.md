@@ -548,7 +548,8 @@ so, the width of chip is 660.685 micrometer and height of the chip is 671.405 mi
 
 To see the actual layout after the flow, we have to open the magic file by adding the command  magic -T Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../temp/merged.lef def read picorv32a.floorplan.
  
-And then after pressing the enter, Magic file will open.
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214920878-ecb2c0a6-4c7c-4d9c-9d48-cb8de2ddc8b3.png">
+And then after pressing the enter, Magic file will open. here we can see the layout.
+
+<img width="722" alt="image" src="https://user-images.githubusercontent.com/123488595/214922787-863a11a5-a0c6-46b1-aa78-0d1ee50ed8b6.png">
 
 ### Reviewing floorplan layot with magic.
