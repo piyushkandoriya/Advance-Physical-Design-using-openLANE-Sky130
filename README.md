@@ -348,6 +348,6 @@ Now we have to input all the packages which required to run the flow.
 Now, here we are ready to execute the command.
 	
 Now, if we are going into  the design folder in openlane, there are nearly 30-40 designs are already builted. Out of them we can open any of the design. for example, here we are opening the picorv32a.v design.
-In  this design we can see many files are available. i.e., scr, config.tcl, etc. This config.tlc file contains every details about the design.
+In  this design we can see many files are available. i.e., scr, config.tcl, etc. This config.tlc file contains every details about the design. for example, details about enrollment, clock period, clock period port etc.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214754184-bfa2b6d1-4535-4cba-a1d8-adc19fb97077.png">
 
