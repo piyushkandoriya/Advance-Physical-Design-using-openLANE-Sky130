@@ -334,8 +334,11 @@ ls means listing the directory. It is used to find the list of total details of 
 #### ls --ltr
 This command will help to list the details in cronological order.
 	
-Here we are working in Sky130_fd_sc_hd varient. where, "sky130" is process name or node name."fd" is a foundary name (skyWater foundary)."sc" means standerd cell librery files and the last one "hd" stands for high density(basically one type of varient). 
+Here we are working in Sky130_fd_sc_hd PDK varient. where, "sky130" is process name or node name."fd" is a foundary name (skyWater foundary)."sc" means standerd cell librery files and the last one "hd" stands for high density(basically one type of varient). 
 
 Sky130_fd_sc_hd varient contains many technology files like verilog, spice, techlef, meglef,mag,gds,cdl,lib,lef,etc. (techlef file contains the layer information).
 
 ### Design Preparation Step
+when we enter in the OpenLANE, we have to use flow.tcl because as a name says, it will goes with the flow using the script. And by using interactive switch, we will do step by step process. without interactive switch, it will run complete flow from RTL to GDSII.
+Now OpenLANE is open and we can see that prompt will change now.
+<img width="992" alt="image" src="https://user-images.githubusercontent.com/123488595/214751196-c0bf70a0-b862-4452-89a2-2af81a89e86b.png">
