@@ -387,6 +387,7 @@ So, the flop ratio = (number of flip flops)/(number of total cell).
 So, the flop ratio is 9.023%.
 
 Before run, we saw that the result folder is empty. but now, after running the synthesis, we can see that all the mapping have been done by ABC.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214806172-4e595c85-a0ac-4b4a-9a85-408806be9434.png">
 	
 And in the report, we can see when the actual synthesis has done. and the actual statistics synthesis report is showing below, which is same as what we have seen before.
