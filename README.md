@@ -393,3 +393,6 @@ Before run, we saw that the result folder is empty. but now, after running the s
 And in the report, we can see when the actual synthesis has done. and the actual statistics synthesis report is showing below, which is same as what we have seen before.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214807555-eab9d596-c396-4c4f-a28d-4773f3e08bdc.png">
 
+
+# <h2 id="header-2">Day 2 -Good floorplanning Vs Bad floorplanning and introduction to library cells</h2>	 
+## <h2 id="header-2_1"> Chip floorplanning considerations</h2>
