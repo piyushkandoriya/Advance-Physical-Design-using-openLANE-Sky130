@@ -411,5 +411,5 @@ Now lets calculate the area occupied by the netlist on a silicon wafer by arrang
 #### what is the core and die?
 A 'core' is the section of the chip where the fundamental logic of the design is placed.
 	
-A 'Die', which is consist of core, is small semiconductor material specimen on which the fundamentak circuits is fabricated.
+A 'Die', which is consist of core, is small semiconductor material specimen on which the fundamental circuits is fabricated.
 ![image](https://user-images.githubusercontent.com/123488595/214816013-c1bdb7f5-5e79-4c26-a944-d6de35671c47.png)
