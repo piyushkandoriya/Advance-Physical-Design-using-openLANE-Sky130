@@ -413,3 +413,16 @@ A 'core' is the section of the chip where the fundamental logic of the design is
 	
 A 'Die', which is consist of core, is small semiconductor material specimen on which the fundamental circuits is fabricated.
 ![image](https://user-images.githubusercontent.com/123488595/214816013-c1bdb7f5-5e79-4c26-a944-d6de35671c47.png)
+If we put the 'arranged netlist' in the core, then whole core is occupied by netlist. that means utilization of core is 100%.
+<img width="122" alt="image" src="https://user-images.githubusercontent.com/123488595/214824163-afcf3f11-4a79-4159-b39d-6fa4676bfeca.png">
+
+#### Utilization factor
+it is defined as, 'the area occupied by netlist' devided by the 'total area of core'. 
+	
+so, in above case, the utilization factor is 1.
+	
+practically, we don't go with 100% uti;ization. practically utilization factor is about 50%-60% to add other extra cells (like buffer) in the core after netlist is placed.
+	
+####Aspect Ratio
+it is defined as (height)/ (width). here in above example the aspect ratio is 1.
+	
