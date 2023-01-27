@@ -827,6 +827,7 @@ Till now, we have done floor planning and run placement also. But if we want to 
 For that first we have to check the swithes in the configuration and from that we have to take the syntax "env(FP_IO_MODE) 1". and make it to the "env(FP_IO_MODE) 2". then again run the floorplanning.
 	
 Then check the changes in the pins location through magic -T. 
+	
 <img width="410" alt="image" src="https://user-images.githubusercontent.com/123488595/215105996-bea3fa72-0f26-4510-b646-e81b9fa5c235.png">
 
 So, here we can see that there are no pins in the upper half side. all pins are in the lower half of the core.
