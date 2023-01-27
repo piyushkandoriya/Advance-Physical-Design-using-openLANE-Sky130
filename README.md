@@ -837,20 +837,24 @@ Before entering into the simulation, we have to creat the spice deck. The spice 
 <ul>
 	<li><a>Component connectivity</a></li>
 	</ul>
+	
 <img width="143" alt="image" src="https://user-images.githubusercontent.com/123488595/215108987-e86fc8db-4dc0-43e9-829d-b6f7e74ef429.png">
 
 <ul>
 	<li><a>Define the components values</a></li>
 	</ul>
+	
 <img width="173" alt="image" src="https://user-images.githubusercontent.com/123488595/215109110-7e889154-84dd-4160-9f0b-6e358162394f.png">
 
 <ul>
 	<li><a>Identyfy the nodes</a></li>
 	</ul>
+	
 <img width="232" alt="image" src="https://user-images.githubusercontent.com/123488595/215109227-89c761c3-169c-45c4-b43a-d030c714e406.png">
 <ul>
 	<li><a>Name 'Nodes'</a></li>
 	</ul>
+	
 <img width="181" alt="image" src="https://user-images.githubusercontent.com/123488595/215109418-16ba1203-64fa-4934-85d2-cc437c6e75ab.png">
 
 Now, let's strat the writing the SPICE deck
