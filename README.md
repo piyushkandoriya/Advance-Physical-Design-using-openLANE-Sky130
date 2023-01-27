@@ -642,3 +642,20 @@ If we zooom into this, we find the buffers, gates, flip flops in this.
 
 ## <h2 id="header-2_3"> Cell design and characterization flows</h2>
 ### Inputs for cell design flow
+#### Cell design flow
+As we know that standerd cells are placed in the library. And in the library many other cells are available which have same functionality but the size is  different. As size is different the parameters like hVt, Ivt also different for each standerd cells.
+
+If we take one of the standerd cells called inverter, it has their own design flow by this it can be understandable to EDA tool.
+	
+The cell design flow is devided into three part.
+<ul>
+	<li><a> Inputs</a></li>
+	</ul>
+<ul>
+	<li><a> Design steps</a></li>
+	</ul>
+<ul>
+	<li><a> Outputs</a></li>
+	</ul>
+	
+<img width="394" alt="image" src="https://user-images.githubusercontent.com/123488595/215036081-d28d9e5d-7a79-4783-9e64-536854625428.png">
