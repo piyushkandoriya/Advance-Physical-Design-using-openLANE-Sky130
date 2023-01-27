@@ -792,7 +792,7 @@ So, according to rise and fall theresold we can find the rise delay and fall del
 
 
 ### Propogation delay and Transition time
-####propogation delay
+#### propogation delay
 let's take the same setup for understand the propogation delay.
 Time delay = Time(out_*_thr)-time(in_*_thr).
 
