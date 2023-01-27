@@ -797,6 +797,7 @@ let's take the same setup for understand the propogation delay.
 Time delay = Time(out_*_thr)-time(in_*_thr).
 
 Let's take waveform on which we can apply above formula.
+	
 <img width="362" alt="image" src="https://user-images.githubusercontent.com/123488595/215054264-65f24a74-d1eb-42f3-a1ba-ed3b13e79781.png">
 
 In any case if thresold point move at the top, at that time we get negative delay because output comes before input. so reason behind the negative delay is the poor choice of the tresold points. which is not acceptable. so, choosing the thresold point is very important.
