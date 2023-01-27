@@ -854,6 +854,7 @@ Before entering into the simulation, we have to creat the spice deck. The spice 
 <img width="181" alt="image" src="https://user-images.githubusercontent.com/123488595/215109418-16ba1203-64fa-4934-85d2-cc437c6e75ab.png">
 
 Now, let's strat the writing the SPICE deck
+
 <img width="197" alt="image" src="https://user-images.githubusercontent.com/123488595/215111052-63e1162e-aa89-419d-a648-317064d488c4.png">
 
 Here, in the syntex, It is like Name of the mosfet, drain , gate, substrait , source. so, the meaning of the syntex is that, name of the mosfet is M1, Drain is connected to OUT node, Gate is connected to IN node, Substrait is connected to Vdd and the Source is connected to Vdd node. PMOS says the type of mosfet and the Width and lenth of channel is defined. similarly, For M2, syntex were written.
