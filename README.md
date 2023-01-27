@@ -816,6 +816,7 @@ or
 transition time = time(slew_high_fall_thr)- time(slew_low_fall_thr)
 
 let's take waveform for understand the slew calculation.
+	
 <img width="378" alt="image" src="https://user-images.githubusercontent.com/123488595/215056482-d42a9a99-69e6-44cc-b34c-f7934e03f95c.png">
 
 	
@@ -884,4 +885,4 @@ So, the total program is given below,
 
 <img width="206" alt="image" src="https://user-images.githubusercontent.com/123488595/215143090-58abcfb4-a7f4-45ac-b836-fb98fd6d84bc.png">
 
-Now let's do the SPICE simulation of this netlist.
+
