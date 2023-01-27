@@ -858,3 +858,12 @@ Now, let's strat the writing the SPICE deck
 <img width="197" alt="image" src="https://user-images.githubusercontent.com/123488595/215111052-63e1162e-aa89-419d-a648-317064d488c4.png">
 
 Here, in the syntex, It is like Name of the mosfet, drain , gate, substrait , source. so, the meaning of the syntex is that, name of the mosfet is M1, Drain is connected to OUT node, Gate is connected to IN node, Substrait is connected to Vdd and the Source is connected to Vdd node. PMOS says the type of mosfet and the Width and lenth of channel is defined. similarly, For M2, syntex were written.
+
+<img width="76" alt="image" src="https://user-images.githubusercontent.com/123488595/215141012-10b78ed8-a530-4e64-baaf-788bf6e3376d.png">
+
+### SPICE simulation lab for CMOS
+Tile we discribe the connectivity information about CMOS inverter only. Now we have to discribe connectivity information about other components also like source, capacitor etc. so, lets look into the other components.
+	
+First we discribe the load capacitor and then about the Vdd and Vin.
+
+<img width="76" alt="image" src="https://user-images.githubusercontent.com/123488595/215141012-10b78ed8-a530-4e64-baaf-788bf6e3376d.png">
