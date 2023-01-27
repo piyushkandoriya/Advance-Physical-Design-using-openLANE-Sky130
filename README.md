@@ -516,7 +516,6 @@ One more thing is need to take care about is that, this pin placement area is bl
 So, floor plan is ready for Placement and Routing step.
 
 ### Steps to run floorplan using OpenLANE
-#### 6)Placement and routing 
 Before run the floorplanning, we required some switches for the floorplanning. these we can get from the configuration from openlane.
 	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214902095-52b164f2-1a0a-4a98-b8fd-c281a7f216be.png">
@@ -583,4 +582,63 @@ here we can see that first standerd cells is for buffer 1. similarly other cells
 ## <h2 id="header-2_2"> Library building and Placement</h2>
 ### Netlist binding and initial place design
 #### 1) bind netlist with physical cells
+Taking netlist as what we taken before,
 
+<img width="256" alt="image" src="https://user-images.githubusercontent.com/123488595/214859546-e01e96f8-f8ae-4d32-b850-e866cc884e95.png">
+
+Here, we can see that every gate or flip-flops have a shape to understand the functionality of the element. But practically, this cells are square or rectangular boxes which has internally some logic to perform. So, here we are taking all the elements from netlist and giving them a perfact height and width with perticular dimention. These all cells together are called 'self'. And this self are stored in the lybrary. Library have all the innformation about all the blocks, like height, width , time delay, conditional innformation, etc. library also have a option for the similar cells (with same functionality) like this with different height and width. According to our space available at floorplanning we can choose out of them.
+
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/123488595/215013265-5593bead-4617-4b43-b571-a09dec2e2a7f.png">
+
+After giving size and shape to each and every box, next step is to take the boxes or element from library and placed in the floorplan. This is called placements of the cells.According to the design of the netlist, we have to put physical blocks in the floorplan which we have design before.Put all the blocks according to the input and output of that perticular blocks.
+	
+<img width="420" alt="image" src="https://user-images.githubusercontent.com/123488595/215014213-bf21cb29-075a-48f5-adfb-49334ab70e41.png">
+
+up to  here we have done stage one and stage two placement. Now we will going for stage 3 and 4. here we have to place FF1 of stage 3 nearer to the Din3 and FF2 of stage 3 nearer to the Dout3. But Din3 and Dout3 are at somme distance from eachother. same thing is there for FF1 and FF2 of stage 4. Let's we placed these all element in such manner that all elements are closed to it's input and output pins.
+	
+<img width="421" alt="image" src="https://user-images.githubusercontent.com/123488595/215015116-5ccae340-8e21-4b7b-b158-547fa9434995.png">
+
+But, the distance of FF1 of Stage 4 and Din4 is still far them others. By optimizing the placement, we can solve this problem.
+
+### Optimize placement using estimated wire lenght and capacitance
+#### 2) Optimize Placement
+	
+As we seen that the distance from Din2 to FF1 of stage 2 is higher. so if we connect the wire between them then resistance and capacitance of the wire comes in to the picture. and due to this the signal integrity can not maintain.
+	
+To maintain the integrity of the signal out from Din2 to FF1, we have to put some repeaters like buffers on between Din2 and FF1. But it will cause of loss of area.
+
+In the stage 1, there is no need of any repeater to transmit the signal. But in stage 2, due to high distance, the lenth of wire is high and signal is not transmitted in perticular range. so we required repeater.
+
+<img width="418" alt="image" src="https://user-images.githubusercontent.com/123488595/215016936-d2ec5589-23d9-4384-8bfd-4cf89ef696f5.png">
+
+### Final Optimization
+Similar as stage 2, in Stage 3 also we required the buffer between gate 2 and FF2.
+
+<img width="280" alt="image" src="https://user-images.githubusercontent.com/123488595/215017463-923fccd6-3655-41e0-979e-1eb954a02fb6.png">
+
+Stage 4 is bit tricky as compared to other stages.
+<img width="288" alt="image" src="https://user-images.githubusercontent.com/123488595/215017652-db5355ec-6225-4cc5-b39f-b2744af5bcb9.png">
+
+Now we have to check that, what we have done is correct or not. For that we need to do Timing analysis by considering the ideal clocks and according to the data of analysis, we will understand that, the placement is correct or not.
+
+### Need for libraries and characterization.
+#### Library charactorization and modelling
+In whole IC design, we have to go through synthesis, floor/power planning, placement, routing , STA. In all this steps one thing remain common, which is "Gates or Cells". That is where the library charactorization becomes very important.
+
+### Congestion aware placement using RePLAce
+Right now we are not constrain about timing, but constrain about the congestion. so, we are making the congrstion is less.
+	
+The placement is donne in two stages. Global and detailed. In global placement, legalization is not happened but after detailed placement legalization will be done.
+
+When we run the placement, first Global placement is happens. main objective of glibal placement is to reducing the length of wires. 
+	
+Now opening the Magic file to see actual view of standerd cells placement.And the actual view in the magic file is given below,
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215032086-358f617b-f98a-4b27-b2b2-1b357fd32bdf.png">
+
+If we zooom into this, we find the buffers, gates, flip flops in this.
+	
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/215032429-60b3d2cf-1e20-4108-96cd-aa58a26c66d0.png">
+
+## <h2 id="header-2_3"> Cell design and characterization flows</h2>
+### Inputs for cell design flow
