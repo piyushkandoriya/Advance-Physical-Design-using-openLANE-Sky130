@@ -353,37 +353,47 @@ In  this design we can see many files are available. i.e., scr, config.tcl, etc.
 Here we can see that the time period is set to the 5.00 nsec. but is we see in the openlane sky130_fd_sc_hd folder, the period is set about 24 nsec. so it is not override to the main file. If it override then give first priority to the main folder.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214755677-28582a34-c102-435e-92e6-87ef0c14542c.png">
 
-Now, in openlane, we are going to  run the synthesis, but before synthesis, we have to prepare design setup stage.
+Now, in openlane, we are going to  run the synthesis, but before synthesis, we have to prepare design setup stage. for that command is " prep -design picorv32a".
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214756580-52cc86ed-874d-4025-bcaa-37cc0629de9a.png">
 
 so, here it is shown that preparation is completed.
 
-###Review after design preparation and run synthesis
+### Review after design preparation and run synthesis
 After completing the preparation, in the picorv32a file, the run terictory is created. Inside the folder, Today's date is created. so in this terictory some folders are available which is required for openlane.
+	
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/214791870-44553cb1-cee9-4048-ae8e-f9b4e4a6b018.png">
 
-In the temp file, merged.lef file is available which was created in preparation time. if we open this merged.lef file, we get all the wire or layer level and cell level information. 
+In the temp file, merged.lef file is available which was created in preparation time. if we open this merged.lef file, we get all the wire or layer level and cell level information.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214793001-9d40a092-8477-40e4-b544-67d5f2a39549.png">
+	
 <img width="996" alt="image" src="https://user-images.githubusercontent.com/123488595/214793517-13d079a0-24c8-4552-b85c-e939a17283f9.png">
 
 While, in the result folder is empty because till we have not run anything and in the report folder all the folders are there about synthesis, placement, floorplanning,cts,routing,magic,lvs.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214795641-2c5f3f0e-6e59-4b7a-b962-8be331bb7e35.png">
 
 now here also one config.tcl file is available similar like design folder. But this config.tcl file contains all default parameter taken by the run.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214796646-4539b897-1ff5-49f4-9c21-3a85ad31af6b.png">
 
 when we make some change in the origional configuration and then we run, for example if we make a change in core utilization in the floorplanning and then we run the floorplanning, at this time in the congig.tcl file, the core utility will change and by cross checking it we can check that the modification is reflected in the exicution or not.
 
 Now, cmds.log file takes all the record of the commands, what we have fab.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214798208-4cc5f491-c8d2-4a95-a254-3c0e1647991f.png">
 	
 Now coming to the openlane, we are going to run the synthesis. It will take some 3-4 mnts to run the synthesis and finally synthesis will complited.
+	
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/214799290-906f704e-5fe3-4cac-989a-9d809acc1809.png">
 
 From the data of synthesis, total number of counter D_flip-flops is 1613. and the number of cells is 14876.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214804529-510e50db-0153-4024-9ba2-f4b523f4d1e0.png">
 	
 So, the flop ratio = (number of flip flops)/(number of total cell).
+	
 So, the flop ratio is 10.84%.
 
 Before run, we saw that the result folder is empty. but now, after running the synthesis, we can see that all the mapping have been done by ABC.
@@ -391,6 +401,7 @@ Before run, we saw that the result folder is empty. but now, after running the s
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214806172-4e595c85-a0ac-4b4a-9a85-408806be9434.png">
 	
 And in the report, we can see when the actual synthesis has done. and the actual statistics synthesis report is showing below, which is same as what we have seen before.
+	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/214807555-eab9d596-c396-4c4f-a28d-4773f3e08bdc.png">
 
 
@@ -398,8 +409,11 @@ And in the report, we can see when the actual synthesis has done. and the actual
 ## <h2 id="header-2_1"> Chip floorplanning considerations</h2>
 ### Utilization factor and aspect ratio
 #### 1)defining the width and height of core and Die
+	
 ![core-to-ioclearence](https://user-images.githubusercontent.com/123488595/214812877-3a95861f-095f-4ae3-aaeb-1a1cf744ea71.jpeg)
+	
 let's begin with netlist( Netlist describes the connectivity of an electronic designs). Considering a netlist with 2 flops and 2 gates.
+	
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/214813921-eaf8a832-f81a-407f-9872-9c26418504f0.png">
 
 lets giving the height and width of standerd cell is 1 unit. So, area of standerd cell is 1 square unit. And assuming the same area for the flip flops also.
@@ -412,6 +426,7 @@ Now lets calculate the area occupied by the netlist on a silicon wafer by arrang
 A 'core' is the section of the chip where the fundamental logic of the design is placed.
 	
 A 'Die', which is consist of core, is small semiconductor material specimen on which the fundamental circuits is fabricated.
+	
 ![image](https://user-images.githubusercontent.com/123488595/214816013-c1bdb7f5-5e79-4c26-a944-d6de35671c47.png)
 	
 If we put the 'arranged netlist' in the core, then whole core is occupied by netlist. that means utilization of core is 100%.
@@ -885,4 +900,68 @@ So, the total program is given below,
 
 <img width="206" alt="image" src="https://user-images.githubusercontent.com/123488595/215143090-58abcfb4-a7f4-45ac-b836-fb98fd6d84bc.png">
 
+Now, doing the simulation and get the graph like this,
 
+<img width="233" alt="image" src="https://user-images.githubusercontent.com/123488595/215184372-825fb2f1-1c27-4dde-965a-3c05aad7a438.png">
+
+Now, doing other simulation in which we change the PMOS width to 3 times of NMOS width. and after diong the simulation, we get the graph like this,
+	
+<img width="242" alt="image" src="https://user-images.githubusercontent.com/123488595/215184798-5c94dcbf-76d1-4650-aa90-1fa7d08ae0b1.png">
+
+The difference between this two graph is that in the second graph the transfer charactoristic is lies in the ecxact middle of the graph where in the first graph it is lies left from the middle of the graph.
+	
+### Switching Thresold Vm
+These both model of different width has their own application. By comparing this both waveform, we can see that the shape of the both waveform is same irrespective of the voltage level.
+	
+This thing tell us that when Vin is at low, output is at high and when Vin is at high, the output is at low. so the charactoristic is maintain at all kind of CMOS with different size of NMOS or PMOS. That is why CMOS logic is very widely used in the design of the gates.
+
+Switching thresold, Vm (the point at which the device switches the level) is the one of the parameter that defined the robustness of the Inverter. Switching thresold is a point at which Vin=Vout.
+	
+<img width="311" alt="image" src="https://user-images.githubusercontent.com/123488595/215187444-2372bb51-c7ad-477b-a1b3-720b0e05273b.png">
+
+In this figure, we can see that at Vm~0.9v, Vin=Vout. This point is very critical point for the CMOS because at this point there is chance that both PMOS and NMOS are turned on. If both are turned on then there is chances of leakage current(Means current flow direcly from power to ground).
+	
+By comparing this both the graph we can understang the concept of switching thresold voltage.
+	
+<img width="379" alt="image" src="https://user-images.githubusercontent.com/123488595/215189055-41cc046d-ece5-4152-b993-74161a01cf58.png">
+
+<img width="157" alt="image" src="https://user-images.githubusercontent.com/123488595/215189213-60ab895b-7d0e-46bc-9504-871f8c7d08c1.png">
+
+### Lab steps to git clone vsdstdcelldesign
+
+To get the clone, copy the clone address from reporetery and paste in openlane terminal after the command "git clone". this will create the folder called "vsdstdcelldesign" in openlane directory.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215191871-c413fd56-c0ff-4519-a375-9c2bf2baae92.png">
+
+now, if we open the openlane directory, we find the vsdstdcelldesing folder in the openlane directory.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215192335-6fbfbd33-5cf4-44c4-b402-a839cbaa8ce6.png">
+
+Now if we goes in the vsdstdcelldesign folder and open it, we get the .mag file,libs file etc.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215192846-38ddf587-4c87-4e31-a159-372efe8c5223.png">
+
+now, let's open the .mag file and see that which layers are used to build the inverter. But before opening the mag file, we need tech file. so we will copy this file from this given below address,
+
+<img width="544" alt="image" src="https://user-images.githubusercontent.com/123488595/215194300-6c23a4fb-bb78-484c-b87f-c2fde8a73b83.png">
+
+And do copy by "cp" command to the location which is given below,
+	
+<img width="944" alt="image" src="https://user-images.githubusercontent.com/123488595/215195032-dff99099-ab03-48a4-b531-910a064c7e72.png">
+
+Now, we can see that this file is copied in the vsdstdcelldesign folder.
+
+<img width="958" alt="image" src="https://user-images.githubusercontent.com/123488595/215195394-1620db66-70ea-46c3-a74a-d3b56621c370.png">
+
+Now, here to see the layout in magic, we don't need to write the whole address because we copy the tech file here.
+
+Now, appying the magic comand like this,
+	
+<img width="950" alt="image" src="https://user-images.githubusercontent.com/123488595/215197031-1f1defa5-2d3e-4c4b-ba4f-b179349d7593.png">
+
+Now, we can see the layout of CMOS inverter in the magic like this,
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215197708-068e7137-9a58-420a-bdc3-d144e0157e74.png">
+
+## <h3 id="header-3_2"> Inception of layout CMOS fabrication process</h3>
+### create active region
