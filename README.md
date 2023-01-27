@@ -580,3 +580,7 @@ In the floorplane, standerd cells are not placed but here standerd cells are ava
 here we can see that first standerd cells is for buffer 1. similarly other cells are for buffer 2, AND gate etc.
 
 
+## <h2 id="header-2_2"> Library building and Placement</h2>
+### Netlist binding and initial place design
+#### 1) bind netlist with physical cells
+
