@@ -1041,7 +1041,7 @@ Here, we actully want P+,P-,N doping profile in the PMOS and N+,N-,P doping prof
 	<li><a>Hot electron effect</a></li>
 	</ul>
 <ul>
-	<li><a>short channel effect</a></li
+	<li><a>short channel effect</a></li>
 	</ul>
 
 For the formation of LDD, we again do ion implantation in P-well by using mask 7 and here we use phosphoros as a ion for light doping.
