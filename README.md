@@ -1226,7 +1226,7 @@ it is time taken to the output waveform to 20% value to 80% value.
 so, rise time= (4.00742-2.51611)e-09 = 1.4913 nsec.
 	
 <ul>
-	<li><a> fall time time</a></li>
+	<li><a> fall time </a></li>
 	</ul>
 	
 it is the time take by output for transition from 80% to 20%.
@@ -1254,3 +1254,7 @@ it is time for output falling to 50% and input is rising to 50%.
 <img width="211" alt="image" src="https://user-images.githubusercontent.com/123488595/215278771-bfc7aec3-c414-460e-aad6-39748a880c2a.png">
 
 so, cell fall delay= 0.0778 nsec.
+
+
+# <h4 id="header-4">Day 4 -Pre-layout timing analysis and importance of good clock tree</h4>
+## <h4 id="header-4_1">timing modelling using delay tables</h4>
