@@ -1036,12 +1036,14 @@ After etching, remove the photoresist and gate terminal looks like,
 ### Lightly doped drain (LDD) formation
 #### 5) LDD formation
 Here, we actully want P+,P-,N doping profile in the PMOS and N+,N-,P doping profile for NMOS. Reason for that is
+	
 <ul>
 	<li><a>Hot electron effect</a></li>
 	</ul>
 <ul>
 	<li><a>short channel effect</a></li
 	</ul>
+
 For the formation of LDD, we again do ion implantation in P-well by using mask 7 and here we use phosphoros as a ion for light doping.
 	
 <img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/215259658-bad6e8a9-1376-44af-bbfc-cc76869c0af8.png">
