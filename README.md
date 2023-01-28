@@ -965,3 +965,51 @@ Now, we can see the layout of CMOS inverter in the magic like this,
 
 ## <h3 id="header-3_2"> Inception of layout CMOS fabrication process</h3>
 ### create active region
+#### 1) selecting a substrate
+we select P-type silicon substrate with high resistivity(5~50 ohms) with moderate dopping and orientation is (100).
+	
+#### 2) creating active region for transister
+First, we create the isolation layer by depositing the Sio2 layer (~40nm) on the substrate.
+
+<img width="272" alt="image" src="https://user-images.githubusercontent.com/123488595/215252142-c2147410-9f36-40d3-88e4-1526eb1cdee9.png">
+
+Now, we are depisiting the Si3N4 layer (~80 nm) on the Sio2 layer.
+
+<img width="274" alt="image" src="https://user-images.githubusercontent.com/123488595/215252210-7b3ff105-40a2-434d-a390-6fe15f5e218d.png">
+
+Now we do patterning by using depositing photoresist and using Mask 1 through UV light.
+
+<img width="275" alt="image" src="https://user-images.githubusercontent.com/123488595/215252310-a6fdff19-7012-4568-929e-f50238d70ae3.png">
+
+Now, first we remove the mask and doing etching of Si3N4 layer on the exposed area.
+	
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/215252424-861d5b11-5a8c-412c-b703-5d60c216f88c.png">
+
+Now, next step is to remove photoresist by chamical reaction, because now to Si3N4 layer itslef behaves like good protecting layer for Sio2 layer. now, if we do LOCOS (local oxidation of silicon) process, the exposed sio2 part will gown and bird break also form. This grown sio2 will provide the perfect isolation between two PMOS and NMOS.
+	
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/215252733-28b2b5c6-1b49-4c4d-8775-efc41960637f.png">
+
+Next step is to etchout the Si3N4 layer by hot phosphoric acid.
+	
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/215252781-33240e0c-00c6-414f-9273-4e2122bd26e3.png">
+
+### Formation of N-well and P-well
+#### 3) N-well and P-well formation
+we can not form P-well and N-well at a same time. we have to protect a region while forming one of the region by photoresist. And then using mask 2 and UV light, we will do patterning of photoresist to form P-well.
+	
+<img width="268" alt="image" src="https://user-images.githubusercontent.com/123488595/215252984-cf790063-7157-4323-b9d8-afddb6bbab37.png">
+
+Now, the area where we want to form the P-well is exposed. now we remove the mask and by applying the ion implantaton method (~200kev)to form P-well using Boron. But still it is P implant. After performing the high temparature anneling, it will become P-well.
+
+<img width="267" alt="image" src="https://user-images.githubusercontent.com/123488595/215253131-9fefda80-ae5c-476d-a46e-de4f9075117e.png">
+
+We wiil do a similar process to form N-well by using mask 3 and using Phosphorus ions.
+	
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/215253198-7b012a1e-f628-4e29-bf7d-53e066096459.png">
+
+till now depth of wells are not define. so, by putting into the high temparature furnace (drive-in diffusion), we will define the depth of wells.
+	
+<img width="305" alt="image" src="https://user-images.githubusercontent.com/123488595/215253381-112f305f-d877-4e81-a3ba-57d4ef89272e.png">
+
+### Formation of gate terminal
+#### 4)Gate formation
