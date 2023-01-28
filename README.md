@@ -1075,6 +1075,7 @@ Same process we will repeat for NMOS by using the mask 10 and boron ion in the N
 Now we put this Half made CMOS into the high temparature (1000 degree)anneling. So P+ implant and N+ implant now become the source and drain.
 	
 <img width="308" alt="image" src="https://user-images.githubusercontent.com/123488595/215260433-d13d9436-2a5d-48b9-857f-53e96fd15884.png">
+		
 ### Local interconnect formation
 #### 7)steps tp form contacts and local interconnects
 First step is remove the thin screen oxide layer by etching. Then deposite the titanium (Ti) using sputtering. here Ti is used because Ti has very low resistivity.
@@ -1132,3 +1133,42 @@ And finally our CMOS is looks like this after the fabrication.
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/215262341-e4f57e70-6df2-4757-aab5-4e14f133e49a.png">
 
 ### Lab introduction to Sky130 basic layer layout and LEF using inverter
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215262772-4fcdab39-5497-4185-92b2-7144b421d6b4.png">
+
+In sky130, every color is showing the different layer. here the firsst layer is for local interconnect shown by blue_perpel color, then second layer is metal 1 which is showm by light perple color, and the metal 2 is shown by pink color. N-well is showm by solide das line. green is N-diffusion region. and red is for polysilicon gate. similarly the brown color is for P-diffusion.
+
+In tckon window, we can see that the selected area is NMOS and similarly we can chech PMOS also. and that is how we can check that the CMOS is working or not.
+		
+<img width="764" alt="image" src="https://user-images.githubusercontent.com/123488595/215263215-3a35b10f-554f-4020-b846-c93fed6c1cda.png">
+
+semilarly we check for the output terminal also.(by double pressing "S" to select the entire thing at output Y).
+		
+<img width="748" alt="image" src="https://user-images.githubusercontent.com/123488595/215263325-47dbad70-c8cf-4ddf-962b-5e4a905664bd.png">
+
+so, we can see that "Y" is attached to locali in cell def sky130_inv.
+		
+we can check the source of the PMOS is connected to the ground or not. and similarly we can check it for NMOS also.
+		
+### Lab steps to create std cell layout and extract spice netlist
+To extract the file from here, we have to write the command in tckon window. and the comand is "extract all".		
+
+<img width="743" alt="image" src="https://user-images.githubusercontent.com/123488595/215264350-e5e03e8f-0168-4bb3-b580-c555cecf055c.png">
+
+Now let's go to this location from the terminal. it is exctracted.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215264618-abbb005e-3ec0-4683-b516-805e8e7a449b.png">
+
+we will use this .ext file to create the spice file to be use with our ngspice tool. for that we have apply the comand "ext2spice cthresh 0 rthresh 0". this will not create anything new. now again we have to type "ext2spice" comand in tckon window.
+		
+<img width="734" alt="image" src="https://user-images.githubusercontent.com/123488595/215264840-97d36274-83b5-4bf3-a754-536d77a2007e.png">
+
+so, now we are checking the location and at there spice file has been created.
+	
+<img width="956" alt="image" src="https://user-images.githubusercontent.com/123488595/215264949-420903c9-4fca-4252-86cb-3c1d7d0f8fbc.png">
+
+let's see what inside the spice file by "vim sky130_inv.spice".
+		
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/215265072-d4082e87-77b5-48a9-a793-ee4a38dcc0ce.png">
+
+		
