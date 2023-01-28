@@ -1176,3 +1176,30 @@ let's see what inside the spice file by "vim sky130_inv.spice".
 		
 ## <h3 id="header-3_3"> Sky130 Tech File labs</h3>
 ### Lab steps to create final SPICE dexk using sky130 tech.
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/215265072-d4082e87-77b5-48a9-a793-ee4a38dcc0ce.png">
+
+here, we can see the all details about the connectivity of the NMOS and PMOS and about the power supply also.
+	
+X0 is NMOS and X1 is PMOS and both's connectivity is shown as GATE DRAIN SUBSTATE SOURCE.
+	
+But here the scale is 10000 um. but in Magic simulation, it is 0.01.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215268967-363bd9e8-e5da-4396-8ec6-a36be6147f78.png">
+
+SO, we are going to change the dimension here in the terminal. so any measurement will be in this scale of 0.01u. i.e., width=37*0.01u.
+
+Now we have to include the PMOS and NMOS lib files. it is inside the libs folder in the vsdstdcellsdesign folder.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215269392-1b80914a-1bdf-483f-ae69-9c381de8c29f.png">
+
+so, now we include this file in the terminal by ".include ./libs/pshort.lib" and ".include ./libs/nshort.lib" comand.
+
+And then set the supply voltage "VDD" to 3.3v by "VDD VPWR 0 3.3V" comand. and similarly set the value of VSS also.
+	
+Now, we need to specify the input files. by Va A VGND PULSE(0V 3.3V 0 0.1ns 2ns 4ns).
+	
+Also add the comand for the analysis like, ".tran 1n 20n", ".control" , "run",".endc",".end". 
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215270177-88efcd7c-35fe-48e0-a828-407c14a41738.png">
+
+to run this write "wq!" at the end.
