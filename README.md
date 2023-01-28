@@ -1202,4 +1202,55 @@ Also add the comand for the analysis like, ".tran 1n 20n", ".control" , "run",".
 	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215270177-88efcd7c-35fe-48e0-a828-407c14a41738.png">
 
-to run this write "wq!" at the end.
+after running this file we get output of ngspice like this,
+
+<img width="956" alt="image" src="https://user-images.githubusercontent.com/123488595/215275895-42cddd25-47ef-4f70-9269-8838b89907be.png">
+	
+Now, ploting the graph here by comand, "plot y vs time a".
+
+<img width="884" alt="image" src="https://user-images.githubusercontent.com/123488595/215276125-9e997b7d-4098-42b0-9b8d-f414b4dfe69b.png">
+
+
+### Lab steps to characterize inverter using sky130 model file
+
+Here, we have to find value of 4 parameters.
+	
+<ul>
+	<li><a> rise time</a></li>
+	</ul>
+	
+it is time taken to the output waveform to 20% value to 80% value.
+	
+<img width="190" alt="image" src="https://user-images.githubusercontent.com/123488595/215278187-4670e664-58cc-4a63-850b-1bddaa8e9fc6.png">
+	
+so, rise time= (4.00742-2.51611)e-09 = 1.4913 nsec.
+	
+<ul>
+	<li><a> fall time time</a></li>
+	</ul>
+	
+it is the time take by output for transition from 80% to 20%.
+
+<img width="223" alt="image" src="https://user-images.githubusercontent.com/123488595/215278356-9eba1539-ff01-48f3-9b0f-8529b1fb786f.png">
+
+so, fall time=0.08745 nsec.
+	
+<ul>
+	<li><a> propogation delay</a></li>
+	</ul>
+	
+it is the time difference between the 50% of input and 50% of  the output.
+	
+<img width="189" alt="image" src="https://user-images.githubusercontent.com/123488595/215278859-a8536576-f6db-4bda-b0f2-59202e055e84.png">
+
+so, propogation delay = 0.60185 nsec.
+	
+<ul>
+	<li><a> cell fall delay</a></li>
+	</ul>
+	
+it is time for output falling to 50% and input is rising to 50%.
+
+<img width="211" alt="image" src="https://user-images.githubusercontent.com/123488595/215278771-bfc7aec3-c414-460e-aad6-39748a880c2a.png">
+
+so, cell fall delay= 0.0778 nsec.
