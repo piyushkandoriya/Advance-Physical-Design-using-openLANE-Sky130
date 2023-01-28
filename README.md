@@ -1013,3 +1013,122 @@ till now depth of wells are not define. so, by putting into the high temparature
 
 ### Formation of gate terminal
 #### 4)Gate formation
+Gate terminal is the most important terminal of the PMOS and NMOS because from the gate terminal only we can control the thresold voltage. doping concentration and oxide capacitance will control the thresold voltage.
+	
+so, first we are maintain the doping concentration here. for that we use mask 4 and again doing the ion implantation of boron ion at lower energy (~60kev).
+
+<img width="275" alt="image" src="https://user-images.githubusercontent.com/123488595/215258532-fee8ed20-056e-4213-a808-598342b05c3a.png">
+
+same process we will repeat for N-well also by using mask 5 and Arsenic ion.
+	
+<img width="283" alt="image" src="https://user-images.githubusercontent.com/123488595/215258621-22be43d0-f29d-45a5-9b75-2d417401b97f.png">
+
+Next step is that we have to fix the oxide layer. but before that we have to remove the oxide layer because this layer is got dammeged because of the privious processes. so,first we remove the layer using HF solution and again re-grown the high quality oxide layer with same thickness. 
+	
+The final step is the deposition of polysilicon layer over oxide layer with more impurities for low resistance gate terminal.Then etched out this polysilicon layer by using mask 6 and photoresist.
+	
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/215259001-0f7d377d-359c-4ea7-a5fe-328077234647.png">
+
+After etching, remove the photoresist and gate terminal looks like,
+	
+<img width="275" alt="image" src="https://user-images.githubusercontent.com/123488595/215259091-8329e9a5-ca5a-4d99-a526-0cb5255fd797.png">
+	
+### Lightly doped drain (LDD) formation
+#### 5) LDD formation
+Here, we actully want P+,P-,N doping profile in the PMOS and N+,N-,P doping profile for NMOS. Reason for that is
+<ul>
+	<li><a>Hot electron effect</a></li>
+	</ul>
+<ul>
+	<li><a>short channel effect</a></li
+	</ul>
+For the formation of LDD, we again do ion implantation in P-well by using mask 7 and here we use phosphoros as a ion for light doping.
+	
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/215259658-bad6e8a9-1376-44af-bbfc-cc76869c0af8.png">
+
+Same process we will repeat for N-well. there we use mask 8 and BOron Ion.
+
+<img width="272" alt="image" src="https://user-images.githubusercontent.com/123488595/215259728-61c72b29-5e80-4347-97fb-8dde3eedd8f6.png">
+
+Now, by creating the spacers, we can protect the actual structre remain constant of P-implantt and N-implant. For that we deposite a thick Sio2 or Si3N4 layer over the gate tereminal.
+	
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/215259837-99dbafd7-e916-40dd-8d05-7abe5f504343.png">
+
+Now, we do Plasma anisotropic etching. By that side-wall spacers are formed.
+		
+<img width="268" alt="image" src="https://user-images.githubusercontent.com/123488595/215259914-013b5c37-c10e-46ea-b03f-a5ffd13ace00.png">
+
+### Source and drain formation
+#### 6)source-drain formation
+Next step is deposite the very thin screen oxide layer to avoid the effect of channeling.
+		
+<img width="338" alt="image" src="https://user-images.githubusercontent.com/123488595/215260114-ee1fc803-7715-4ab3-b8b7-040b3c46ccae.png">
+
+Now to form the drain and source, again we do the ion implantation of arsenic at 75kev to create the N+ implant by using mask 9 in the P-well to form PMOS.
+
+<img width="265" alt="image" src="https://user-images.githubusercontent.com/123488595/215260225-0e1cc276-d23f-42dc-aef7-d4826d8bd4d4.png">
+
+Same process we will repeat for NMOS by using the mask 10 and boron ion in the N-well at 50kev to creat P- implant.
+		
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/215260301-53191988-fef9-472a-85df-5451bc172acf.png">
+
+Now we put this Half made CMOS into the high temparature (1000 degree)anneling. So P+ implant and N+ implant now become the source and drain.
+	
+<img width="308" alt="image" src="https://user-images.githubusercontent.com/123488595/215260433-d13d9436-2a5d-48b9-857f-53e96fd15884.png">
+### Local interconnect formation
+#### 7)steps tp form contacts and local interconnects
+First step is remove the thin screen oxide layer by etching. Then deposite the titanium (Ti) using sputtering. here Ti is used because Ti has very low resistivity.
+		
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/215260746-97163977-6efa-49d1-b72d-9023a393c1ec.png">
+
+Next step is to create the reaction between Ti layer and source, gate, drain of CMOS. For that wafer is heated at about 650-700 degree temparature in N2 ambient for about 60 seconds. and after reaction, we can see the titanium siliside over the wafer. One more reaction is heppend there between Ti and N. and it results the TIN which is used for local communication.
+		
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/215260927-f4b9c620-8ea0-4c25-b12e-dfc860054a42.png">
+
+Now by using mask 11 and photoresist, we will etched out the TIN and make perticular contacts. TIN is etched out by using RCA cleaning.
+		
+<img width="275" alt="image" src="https://user-images.githubusercontent.com/123488595/215261246-d5f30607-f0f0-4b37-ac09-c3dee2131026.png">
+		
+Now, local interconnects are formed after etching and removing the photoresist.
+
+<img width="270" alt="image" src="https://user-images.githubusercontent.com/123488595/215261365-24051f17-5b93-4279-8906-089d0cc87eff.png">
+
+### Higher level metal formation
+#### 8)Higher level metal formation
+These steps are very semilar like previous steps. First thing that we are noticing is that the surface is non planner. it is not good to use this type of non planner serface for matel interconnects because of the problems regarding the metal disconinuty. so, we have to plannerize the surface by depositing the thick layer of sio2 with some impurity to make less resistive layer. and then we used CMP (chemical mechanical polishing) technique to plannerise the surface.
+		
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/215261636-404703fe-d816-4e15-b7ca-a26734eb3a80.png">
+
+Now using mask 12 and photorsist we etched the sio2 layer to diposite the metal in it.
+
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/215261687-a3dd767d-f098-40ae-ba77-d0478d62b5ae.png">
+
+Now remove the photoresist and seposite the thin later of TIN (~10nm) over the wafer. Because TiN is act as very good adession layer for sio2 and also act as a barrier between bottom layer and top layer of metal interconnects.
+		
+<img width="289" alt="image" src="https://user-images.githubusercontent.com/123488595/215261728-34ef24e2-b118-4847-9340-7fb18f4fe351.png">
+
+Next step is to deposite the blanket tungsten (W) layer over the wafer. and then do the CMP here to plannerize the surface.
+		
+<img width="272" alt="image" src="https://user-images.githubusercontent.com/123488595/215261916-fd979354-1f0a-401a-bb2e-caa1bc47500c.png">
+
+This W is act as a contact holes and this holes needs to connect to the Higher metal layer. so we will deposite the Al (aluminium) layer.
+		
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/215262003-537891e9-3d54-4ba9-a487-b28de6edfe54.png">
+
+Then by using the mask 13 and photoresist, we etched the W layer out to form the contact at perticular place by Plasma etching.
+	
+<img width="268" alt="image" src="https://user-images.githubusercontent.com/123488595/215262045-e150bfd6-485b-44f4-af41-c5a7d49e841a.png">
+
+This is our first level of metal interconnets. now we again do the same process as above to deposite the second level of metal interconnect by using mask 14 for etched out the sio2 and using mask 15 for etched out Al leyer.
+		
+<img width="272" alt="image" src="https://user-images.githubusercontent.com/123488595/215262203-012bbb28-51fb-43d9-bbab-b087100bfd8a.png">
+
+The upper layer of Al is bit thicker as compared to lower layer of Al.Now, again deposite the layer of sio2 or si3N4 to protect the chip.
+		
+<img width="270" alt="image" src="https://user-images.githubusercontent.com/123488595/215262274-0e3b4b18-ac8d-4aae-82f7-6ae344a2640c.png">
+
+And finally our CMOS is looks like this after the fabrication.
+
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/123488595/215262341-e4f57e70-6df2-4757-aab5-4e14f133e49a.png">
+
+### Lab introduction to Sky130 basic layer layout and LEF using inverter
