@@ -1174,3 +1174,5 @@ let's see what inside the spice file by "vim sky130_inv.spice".
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/215265072-d4082e87-77b5-48a9-a793-ee4a38dcc0ce.png">
 
 		
+## <h3 id="header-3_3"> Sky130 Tech File labs</h3>
+### Lab steps to create final SPICE dexk using sky130 tech.
