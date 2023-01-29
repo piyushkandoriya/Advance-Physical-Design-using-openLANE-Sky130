@@ -1480,6 +1480,10 @@ NOw, what we have to do is identify the combinational path delay for the given b
 <img width="352" alt="image" src="https://user-images.githubusercontent.com/123488595/215296376-d5be8cb2-15c8-41e5-8781-d094a49d0469.png">
 
 ### Lab steps to configure OpenSTA for post-synth timing analysis.
+when we do CTS, CTS is a stage where, we add clock buffers along with clockpath and build the clock tree. so, actually we are changing the netlist. Along the running CTS, actually the netlist file also created. so, after running the CTS, we will see the new Verilog file here.
+	
+	
+	
 	
 ## <h4 id="header-4_3">Clock tree synthesis TritonCTS and signal integrity</h4>
 ### Clock tree routing and buffering uisng H-Tree algorithm
