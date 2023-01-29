@@ -1479,4 +1479,4 @@ NOw, what we have to do is identify the combinational path delay for the given b
 	</ul>
 
 # <h7 id="header-7">Acknowledgement</h7>
-I would like to express my special thanks of gratitude to [Mr. kunal ghosh] (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and [mr.Nickson Jose] and [mr. SUMANTO KAR](Sr. Project Technical Assistant, IIT BOMBAY) for their guidence and temendous presenting this workshop on Advance Physical Design using OpenLANE/Sky130. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the physical chip design using OpenLANE software and many more.
+I would like to express my special thanks of gratitude to Mr. kunal ghosh (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and Mr.Nickson Jose and Mr. SUMANTO KAR (Sr. Project Technical Assistant, IIT BOMBAY) for their guidence and temendous presenting this workshop on Advance Physical Design using OpenLANE/Sky130. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the physical chip design using OpenLANE software and many more.
