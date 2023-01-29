@@ -1476,6 +1476,9 @@ The problem occurse due to the charging the capacitor is signal inntigrity probl
 	
 <img width="283" alt="image" src="https://user-images.githubusercontent.com/123488595/215309501-836f18ab-5556-442e-b690-a5e4b8559a37.png">
 
+### Crosstalk and clock net shielding
+we build the clock tree in a manners that the skew becomes zero between launch Flop and capture flop. but if accedently any crosstalk heppense then everything what we had design is detoriated.
+
 
 
 
