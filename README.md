@@ -1457,6 +1457,30 @@ NOw, what we have to do is identify the combinational path delay for the given b
 	
 ## <h4 id="header-4_3">Clock tree synthesis TritonCTS and signal integrity</h4>
 ### Clock tree routing and buffering uisng H-Tree algorithm
+#### what is clock tree synthesis?
+As shown in below, figure, let's connect clk1 to FF1 & FF2 of stage 1 and FF1 of stage 3 and FF2 of stage 4 with out any rules.
+
+<img width="280" alt="image" src="https://user-images.githubusercontent.com/123488595/215308549-adf17411-a251-4dbe-96ac-aa1ce94a2a22.png">
+
+Now, let's see the problem with this clock Rout. let us say time required to reach the FF1 and FF2 of stage 1 are t1 and t2 for clock1. so, we can say that t2-t1= skew (ideally skew=o).
+
+<img width="216" alt="image" src="https://user-images.githubusercontent.com/123488595/215308715-2e81309f-9ab4-477e-afff-7648d5cf0fc0.png">
+
+To make, skew to be 0, this rout definatly not help. so, we can say that what we built the tree is "BAD TREE". so, the concept of H-tree comes out. with the Mid point strategy, H-tree form.
+	
+<img width="285" alt="image" src="https://user-images.githubusercontent.com/123488595/215308879-7c239ada-073f-438f-b462-fcbca5b77c60.png">
+
+Next thing is clock tree synthesis (buffering).as we see in the clockk tree and we observed that clock has to travel through all wires and it will charge all capacitor which are comming in the path of this wire. 
+	
+The problem occurse due to the charging the capacitor is signal inntigrity problem because of transition of signals. solution of this problem is add the repeaters here. the repaters are the similar as what we use in the data path but the main difference is, here repeater has equal rise and fall time.
+	
+<img width="283" alt="image" src="https://user-images.githubusercontent.com/123488595/215309501-836f18ab-5556-442e-b690-a5e4b8559a37.png">
+
+
+
+
+
+
 
 # <h6 id="header-6">References</h6>
 <ul>
