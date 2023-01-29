@@ -1456,7 +1456,7 @@ NOw, what we have to do is identify the combinational path delay for the given b
 ### Lab steps to configure OpenSTA for post-synth timing analysis.
 	
 ## <h4 id="header-4_3">Clock tree synthesis TritonCTS and signal integrity</h4>
-### Clock tree routhing and buffering uisng H-Tree algorithm
+### Clock tree routing and buffering uisng H-Tree algorithm
 
 # <h6 id="header-6">References</h6>
 <ul>
