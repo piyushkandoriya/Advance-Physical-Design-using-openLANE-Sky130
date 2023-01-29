@@ -1376,7 +1376,7 @@ To prepare the delay table, the perticukar element is taken out of the circuit a
 
 ### Delay table usage part 1
 Let's looks into the sample examples and making the table for Cbuf'1' and Cbuf'2',
-	
+
 <img width="396" alt="image" src="https://user-images.githubusercontent.com/123488595/215291481-78208007-1c64-4f2a-ad34-72c9003ad78a.png">
 	
 let's take practical example on the circuit. we take 40psec as input transition on the level 1 buffer and as per assumption load is around 60fF. and delay is comes between x9 and x10. lets take x9' as the delay of the buffer of level 1. 
@@ -1390,3 +1390,93 @@ The total delay from input to the output is= x9' + y15.(here we are ignoring the
 	
 If load is not same at the every nodes, the skew will not be the zero.
 
+### Lab steps to configure synthesis settings to fix slack and include vsdinv
+After synthesis, we observed that the slack is nagative here. wns(worst negative slack)= -24.89 and tns(total negative slack)= -759.
+
+<img width="991" alt="image" src="https://user-images.githubusercontent.com/123488595/215292549-b599c5c8-7988-4547-8f22-dacabadf61ae.png">
+
+let's do some modification here. for that opening the READme file from the /openlane/configuration/ less READme.md
+
+Now lets try to make balance between area and the delay of the synthesis by changing the stratagy. comand for checking the current strategy is "echo $::env(SYNTH_STRATEGY)", and comand for changing the stategy is "set ::env(SYMTH_STRATEGY) 1". by doing this area will increase the little but but timing will improve.
+
+Then checking the synth_bufferung and synth_sizing. if any one them is off then make it on by set the value of it by 1.
+
+After running synthesis we will get improved timing.
+	
+
+## <h4 id="header-4_2">Timing analysis with ideal clocks using openSTA</h4>
+### Setup timing analysis and introduction to flip-flop setup time
+#### Timing analysis (with ideal clock)
+we start with taking the ideal clock and we will do timing analysis for the ideal clock first.
+
+Let's start the setup analysis with the ideal clock(single clock).
+specifications of the clock is
+<ul>
+	<li><a>clock frequency =1 GHz</a></li>
+	</ul>
+<ul>
+	<li><a>clock period =1 nsec</a></li>
+	</ul>
+Let's take lainch Flop and Capture flop with clock. here clock tree is not built yet. so it is ideal scenario. here we have to do analysis between '0' and 'T'. with that assume that the delay of logic is 'θ'.
+
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/123488595/215295611-3da466f1-bca4-4917-8303-8e82b0d9dd3f.png">
+
+Setup timing analysis says that θ<T. this condition should be neccessory for the the comninational logic work. 
+				     
+Now let's introduce the practical scenario here. Opening the capture flop and it has two mux inside it.
+
+<img width="125" alt="image" src="https://user-images.githubusercontent.com/123488595/215295701-4ffad35f-5931-4314-8f22-a369bb6db045.png">
+
+The way flop work, it will shown by the timing graph like this,
+
+<img width="86" alt="image" src="https://user-images.githubusercontent.com/123488595/215295736-7c8253e6-7bdd-4d24-bac0-0fc84e82bb8a.png">
+
+So, here mux 1 and mux 2 both have their own delay. these delay will restrict the combination delay to the requirment.
+
+Hence finite time 's' required before clk edge for 'D' to reach Qm.
+	
+So, we can write that the internal delay of the MUX1 = set up time(S).
+
+So, now θ<T becomes θ<(T-S).
+
+	
+### Introduction to clock hitter and uncertainty
+Let's bring one more practical scenario here. clock is taking from the some clock source or PLL. So, because of some delay from the practical source of clock or PLL, clock pulse will not comes exacly at t=0 or at t=T. that in built variation of the clock is called jitter.
+				     
+<img width="327" alt="image" src="https://user-images.githubusercontent.com/123488595/215296132-a05d4f02-f607-43b3-9fb1-9e02eba33b09.png">
+
+lets consider this uncertantity time(US) in consideration. So, now equation becomes like, θ<(T-S-US). Now assuming that 'S'=0.01ns and 'US'=0.09ns. by taking that, lets identify the timing path for our existing scenario. in our circuit stage 1 and stage 3 logic path has single clock. 
+
+NOw, what we have to do is identify the combinational path delay for the given both logics.
+
+<img width="380" alt="image" src="https://user-images.githubusercontent.com/123488595/215296350-9d3b9c46-295e-46e8-8c57-ddebf3e64404.png">
+
+<img width="352" alt="image" src="https://user-images.githubusercontent.com/123488595/215296376-d5be8cb2-15c8-41e5-8781-d094a49d0469.png">
+
+### Lab steps to configure OpenSTA for post-synth timing analysis.
+	
+## <h4 id="header-4_3">Clock tree synthesis TritonCTS and signal integrity</h4>
+### Clock tree routhing and buffering uisng H-Tree algorithm
+
+# <h6 id="header-6">References</h6>
+<ul>
+	<li><a>Workshop Github material</a></li>
+	</ul>
+<ul>
+	<li><a>https://github.com/google/skywater-pdk</a></li>
+	</ul>
+<ul>
+	<li><a>https://github.com/nickson-jose/vsdstdcelldesign</a></li>
+	</ul>
+<ul>
+	<li><a>https://sourceforge.net/projects/ngspice/</a></li>
+	</ul>
+<ul>
+	<li><a>https://github.com/</a></li>
+	</ul>
+<ul>
+	<li><a>https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/Introduction-to-Industrial-Physical-Design-Flow.pdf</a></li>
+	</ul>
+
+# <h7 id="header-7">Acknowledgement</h7>
+I would like to express my special thanks of gratitude to [Mr. kunal ghosh] (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and [mr.Nickson Jose] and [mr. SUMANTO KAR](Sr. Project Technical Assistant, IIT BOMBAY) for their guidence and temendous presenting this workshop on Advance Physical Design using OpenLANE/Sky130. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the physical chip design using OpenLANE software and many more.
