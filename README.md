@@ -1482,6 +1482,22 @@ NOw, what we have to do is identify the combinational path delay for the given b
 ### Lab steps to configure OpenSTA for post-synth timing analysis.
 when we do CTS, CTS is a stage where, we add clock buffers along with clockpath and build the clock tree. so, actually we are changing the netlist. Along the running CTS, actually the netlist file also created. so, after running the CTS, we will see the new Verilog file here.
 	
+Now, we see what is in the my_base.sdc file.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215353397-025edb62-8107-4bd8-801b-ae66fb8fc3a1.png">
+
+
+here, we can see the capacitor load and clock period and clock port etc.
+
+### Lab steps to optimize synthesis to reduce setup violations
+Till now our slack is -3.52. and skew is zero because we have not done CTS and assuming the ideal clocks.
+	
+<img width="583" alt="image" src="https://user-images.githubusercontent.com/123488595/215354675-bb8dec7d-c93c-4bae-8607-a1a355e89512.png">
+
+in the set up analysis we have seen some high values of input slew. the reason is fanout is very high.
+	
+<img width="669" alt="image" src="https://user-images.githubusercontent.com/123488595/215354879-0d50613d-cec0-4a34-a55c-d4798a58fc0e.png">
+
+Now we will go in the openlane flow and optimze the fanout value.
 	
 	
 	
