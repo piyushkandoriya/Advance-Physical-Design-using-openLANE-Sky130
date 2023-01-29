@@ -1496,10 +1496,14 @@ Till now our slack is -3.52. and skew is zero because we have not done CTS and a
 in the set up analysis we have seen some high values of input slew. the reason is fanout is very high.
 	
 <img width="669" alt="image" src="https://user-images.githubusercontent.com/123488595/215354879-0d50613d-cec0-4a34-a55c-d4798a58fc0e.png">
+		
+Then check the file which is created. Go to the placements folder under results and then invoke the magic tool and load the def file. The command is:magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &	
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215357227-2d080ece-da04-4b71-85d5-7c29f88305e9.png">
 
-Now we will go in the openlane flow and optimze the fanout value.
+Noow, to reduce the fanout we use the command is : "set ::env(SYNTH_MAX_FANOUT) 4" and then run the synthesis.
 	
-	
+but here also slack doesn't reduce.
 	
 ## <h4 id="header-4_3">Clock tree synthesis TritonCTS and signal integrity</h4>
 ### Clock tree routing and buffering uisng H-Tree algorithm
@@ -1536,6 +1540,9 @@ The shielding is the technique, by which we can protect the net from these probl
 Now, let's see about the delta delay.
 
 <img width="404" alt="image" src="https://user-images.githubusercontent.com/123488595/215311259-ed24e431-674f-4573-9b11-6516296da86f.png">
+	
+### Lab step to run CTS using TritonCTS
+
 
 
 ## <h4 id="header-4_4">Timing analysis with real clocks using openSTA</h4>
