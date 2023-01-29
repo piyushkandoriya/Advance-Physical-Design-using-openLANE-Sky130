@@ -1399,10 +1399,36 @@ let's do some modification here. for that opening the READme file from the /open
 
 Now lets try to make balance between area and the delay of the synthesis by changing the stratagy. comand for checking the current strategy is "echo $::env(SYNTH_STRATEGY)", and comand for changing the stategy is "set ::env(SYMTH_STRATEGY) 1". by doing this area will increase the little but but timing will improve.
 
-Then checking the synth_bufferung and synth_sizing. if any one them is off then make it on by set the value of it by 1.
+Then checking the synth_bufferung and synth_sizing. if any one them is off then make it on by set the value of it by 1. 
+	
+Till here we not get slack 0. to make slack 0, we ahve to write comand "set ::env(SYMTH_STRATEGY) DELAY 0"
 
 After running synthesis we will get improved timing.
+
+<img width="982" alt="image" src="https://user-images.githubusercontent.com/123488595/215346651-5570c020-0f7a-422f-b893-0607e6ae2cb1.png">
 	
+Now next step is run floorplan, place IO, do global placement or detail placement and genrate pdn file the run the cts by following comands.
+	
+inut_floorplan
+	
+place_io
+	
+global_placement_or
+	
+detailed_placement
+
+tap_decap_or
+
+detailed_placement
+	
+gen_pdn
+	
+run_cts
+
+After running the floorplaning and done the global placement we get positive slack.
+	
+<img width="950" alt="image" src="https://user-images.githubusercontent.com/123488595/215347390-7b57c0f6-c4de-4800-89b0-9097c8947224.png">
+
 
 ## <h4 id="header-4_2">Timing analysis with ideal clocks using openSTA</h4>
 ### Setup timing analysis and introduction to flip-flop setup time
