@@ -1407,28 +1407,14 @@ After running synthesis we will get improved timing.
 
 <img width="982" alt="image" src="https://user-images.githubusercontent.com/123488595/215346651-5570c020-0f7a-422f-b893-0607e6ae2cb1.png">
 	
-Now next step is run floorplan, place IO, do global placement or detail placement and genrate pdn file the run the cts by following comands.
+Next command for run is :
 	
-inut_floorplan
-	
-place_io
-	
-global_placement_or
-	
-detailed_placement
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 
-tap_decap_or
+add_lefs -src $lefs
 
-detailed_placement
+Then again run the synthesis.
 	
-gen_pdn
-	
-run_cts
-
-After running the floorplaning and done the global placement we get positive slack.
-	
-<img width="950" alt="image" src="https://user-images.githubusercontent.com/123488595/215347390-7b57c0f6-c4de-4800-89b0-9097c8947224.png">
-
 
 ## <h4 id="header-4_2">Timing analysis with ideal clocks using openSTA</h4>
 ### Setup timing analysis and introduction to flip-flop setup time
@@ -1485,25 +1471,35 @@ when we do CTS, CTS is a stage where, we add clock buffers along with clockpath 
 Now, we see what is in the my_base.sdc file.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215353397-025edb62-8107-4bd8-801b-ae66fb8fc3a1.png">
 
-
 here, we can see the capacitor load and clock period and clock port etc.
 
-### Lab steps to optimize synthesis to reduce setup violations
-Till now our slack is -3.52. and skew is zero because we have not done CTS and assuming the ideal clocks.
+Now, to reduce the fanout we use the command is : "set ::env(SYNTH_MAX_FANOUT) 4" and then run the synthesis.
 	
-<img width="583" alt="image" src="https://user-images.githubusercontent.com/123488595/215354675-bb8dec7d-c93c-4bae-8607-a1a355e89512.png">
+but here also slack doesn't reduce.
+	
+Now next step is run floorplan, place IO, do global placement or detail placement and genrate pdn file the run the cts by following comands.
 
-in the set up analysis we have seen some high values of input slew. the reason is fanout is very high.
 	
-<img width="669" alt="image" src="https://user-images.githubusercontent.com/123488595/215354879-0d50613d-cec0-4a34-a55c-d4798a58fc0e.png">
-		
+inut_floorplan
+	
+place_io
+	
+global_placement_or
+	
+detailed_placement
+
+tap_decap_or
+
+detailed_placement
+
+After running the floorplaning and done the global placement we get positive slack.
+	
+<img width="950" alt="image" src="https://user-images.githubusercontent.com/123488595/215347390-7b57c0f6-c4de-4800-89b0-9097c8947224.png">
+
 Then check the file which is created. Go to the placements folder under results and then invoke the magic tool and load the def file. The command is:magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &	
 	
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215357227-2d080ece-da04-4b71-85d5-7c29f88305e9.png">
 
-Noow, to reduce the fanout we use the command is : "set ::env(SYNTH_MAX_FANOUT) 4" and then run the synthesis.
-	
-but here also slack doesn't reduce.
 	
 ## <h4 id="header-4_3">Clock tree synthesis TritonCTS and signal integrity</h4>
 ### Clock tree routing and buffering uisng H-Tree algorithm
@@ -1542,9 +1538,48 @@ Now, let's see about the delta delay.
 <img width="404" alt="image" src="https://user-images.githubusercontent.com/123488595/215311259-ed24e431-674f-4573-9b11-6516296da86f.png">
 	
 ### Lab step to run CTS using TritonCTS
+Now next step is CTS. for that write the command: "run_cts".
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215360216-82a2eaa6-cc33-411a-847d-38c4d33ffd12.png">
 
+In CTS stage the buggers are added in the paths. so, it will modifiying the netlist. so, if we go in the synthesis folfer and check the files, where cts.v file will avaiilable and this file contains the added buffers.
 
+### Lab steps to verify CTS runs
+we have run CTS.Now before we goes into the post cts flow, we need to know that the actual meaning of the "run" command. This is the proc of tcl file. so, lets see, from where, openlane take this procs. for that we need to goes into the openlane and then goes into scripts and then check the "tcl_commands". in this file tcl commands are there for every stages what we have run till now. so let's see  the "cts.tcl" file.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215361250-e3b87404-d1f8-4ed4-857c-f60ce973f253.png">
 
+here we can see the many procs are there. so here we can see the procs are run during the CTS run.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215361426-81d0e0cf-79a6-486f-9405-ec11368fdb82.png">
+
+so when we run the cts in the flow, basically it do this things.
+	
+first it run the tritonCTS by givin total information.
+
+then it set the value of timer.
+
+Then it goes for open the openroad.
+	
+if we check the openroad folder, at that directory "or.files" are available which was runs in the OPENROAD EDA tool.
+	
+Now les's check the "or_cts.tcl" file. inside this we can see the few switches.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215362238-03fec719-6a58-4e32-82c9-a44c1daea771.png">
+
+Now lets check what the library does. for this command is "echo $::env(LIB_SYNTH_COMPLETE)" In the main flow. then again apply command :"echo $::env(LIB_TYPICAL)"
+	
+Now checking the clock period of this by command: "echo $::env(SYNTH_MAX_TRAN)"
+	
+So, clock period seted as 2.473 nsec.
+	
+then checking the max cap value, by command : "echo $::env(CTS_MAX_CAP)". and it is setted as 1.53169
+	
+Now checking the branch buffer cells by command :"echo $::env(CTS_CLK_BUFFER_LIST)".
+	
+	
+
+	
 ## <h4 id="header-4_4">Timing analysis with real clocks using openSTA</h4>
 ### Setup timing analysis using real clocks
 With real clock, circuit looks littel bit different then ideal clock. Here the bufferes and wires are added to the circuts.
