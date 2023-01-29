@@ -1625,21 +1625,22 @@ Next step is paracitic Extraction. so, the wire will get some resistance and cap
 	
 	
 ## <h5 id="header-5_3"> Tritinroute features</h5>
-### TritonRoute feature 1 -Honors pre-processed route guide 
+### TritonRoute feature 1 -Honors pre-processed route guide
+<img width="378" alt="image" src="https://user-images.githubusercontent.com/123488595/215336408-7194a72e-03db-4946-bebe-f997e1e88c1e.png">
+
 <ul>
 	<li><a> It performs initial detail route.</a></li>
 	</ul>
 <ul>
 	<li><a> It attempts as much as possible to route within route guides.</a></li>
 	</ul>
-requierment of processed guides is 1)should have within unit lenth 2)should be in the preferred direction.
+requierment of processed guides are 1)should have within unit lenth 2)should be in the preferred direction.
 	
 <img width="320" alt="image" src="https://user-images.githubusercontent.com/123488595/215319134-a09fe612-ba7d-4289-9493-484d967a133c.png">
 
 	
 <ul>
-	<li><a>
-Assumes route guides for each net satisfy inter-guide connectivity. </a></li>
+	<li><a>Assumes route guides for each net satisfy inter-guide connectivity. </a></li>
 	</ul>
 If two guides are connected then 1) they are on the same metal layer with  touching edges. 2) they are on the neighbouring metal layers with a nonzero vertically overlapped area. 
 
@@ -1648,14 +1649,57 @@ If two guides are connected then 1) they are on the same metal layer with  touch
 	</ul>
 	
 ### TritonRoute feature 2 & 3 - inter-guide connectivity and intra-layer & inter -layer routing
+Each unconnected terminal. i.e, poin of a standerd-cell instance should have its pin shape overlapped by a route guide.
 
+<img width="184" alt="image" src="https://user-images.githubusercontent.com/123488595/215336322-ed026a49-58a5-4814-a913-1de1fd0a7929.png">
+	
+Here we can see that black dots are pins of the cells and it is overlapped by route guide. if you have pins on the intersection of the vertical and horizontal tracks that will ensure that it will be overlapped by route guides.
+	
+#### Intra-layer parallel and inter-layer sequential panel routing	
+Intra layer means within the layers and inter layear means between the layers.	
+	
+<img width="389" alt="image" src="https://user-images.githubusercontent.com/123488595/215336677-367ef8c1-38a9-4657-a06c-bf7fa46bc94c.png">
 
+In this figure we can see the 4 layers of metal. each of these layers are devided in to the "--" lines.	lets focus on metal 2 layer. here we assume the routing direction vertical. These "--" lines are called pannels. each pannels assigns the routing guides. here we can see the blue arrows. here routing is heppenes in the even index. it means that intra layer parallel routing. first it is heppenes in the even index and the it will heppen in the odd index. but it is heppening in the parallel in this perticular layer.
+
+So, the (a) figure shows the parallel routing of panels on M2.In (b) figure, we can see the parallel routing of even panels on M3 and (c) shows the parallel routing of odd panels on M3.
+
+### TritonbRoute method to handle connectivity	
+<ul>
+	<li><a>INPUTS: LEF<DEF<preprocessed route guide</a></li>
+	</ul>	
+<ul>
+	<li><a>OUTPUTS:detailed routing solution with optimized wore-length and via count</a></li>
+	</ul>	
+<ul>
+	<li><a>CONSTRAINTS:Route guide honouring, connectivity constraonts and design rukes</a></li>
+	</ul>		
 	
+Now we have to defined the space where detailed routing take spaced.
 	
+### Handling connectivity
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/123488595/215340811-5271ff2f-c7d6-44a8-a646-d96ba11878b7.png">
+ 
+To handle the connectivity, two concepts comes into the picture,
+<ul>
+	<li><a>Access point:An on-gride point on the metal layer of the route guide, and is used to connect to lower-layer segments, upper-layer segments, pins or IO ports.</a></li>
+	</ul>	
+<ul>
+	<li><a>Access point cluster (APC): A union of all access points derived from same lower-layer segment,upper-layer guide, a pin or an IO port</a></li>
+	</ul>	
 	
+Here in the figure shown above, the illustration of access points: 
 	
+(a)To a lower-layer segment
 	
+(b)To a pin shape
 	
+(c)To upper layer
+	
+### Routing topology algorithm and final files list post-route
+<img width="181" alt="image" src="https://user-images.githubusercontent.com/123488595/215341969-8f89f535-1b59-40ad-bf83-94a9b29cebd8.png">
+
+The algorithm says that for each APCs we have to find the cost associated with it and we have to do minimum spaning tree betweem the APCs and the cost. finally the conclusion of the algorithm is that we have to find the minimul and the most optimal poits between two APCs.
 	
 # <h6 id="header-6">References</h6>
 <ul>
