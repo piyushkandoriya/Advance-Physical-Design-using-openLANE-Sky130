@@ -1477,14 +1477,186 @@ The problem occurse due to the charging the capacitor is signal inntigrity probl
 <img width="283" alt="image" src="https://user-images.githubusercontent.com/123488595/215309501-836f18ab-5556-442e-b690-a5e4b8559a37.png">
 
 ### Crosstalk and clock net shielding
-we build the clock tree in a manners that the skew becomes zero between launch Flop and capture flop. but if accedently any crosstalk heppense then everything what we had design is detoriated.
+We build the clock tree in a manners that the skew becomes zero between launch Flop and capture flop. but if accedently any crosstalk heppense then everything what we had design is detoriated.
+	
+Let take the first clock net and protect it by shielding. here we protect the clock network from outside world. if the protection is not there then problems like glitch and delta delay is heppens.
+
+The glitch is heppence because of Coupling capacitance between the wires.
+
+<img width="203" alt="image" src="https://user-images.githubusercontent.com/123488595/215310959-a4db4ed7-040c-43e1-a65a-75271e4c50c7.png">
+
+The shielding is the technique, by which we can protect the net from these problems. In a shielding, we put wire between the other teo wire where coupling capacitance is generate. This extra wire is grounded or connected to VDD.
+
+Now, let's see about the delta delay.
+
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/123488595/215311259-ed24e431-674f-4573-9b11-6516296da86f.png">
 
 
+## <h4 id="header-4_4">Timing analysis with real clocks using openSTA</h4>
+### Setup timing analysis using real clocks
+With real clock, circuit looks littel bit different then ideal clock. Here the bufferes and wires are added to the circuts.
+	
+Here, due to buffer, clock signals are not reaching the flop at t=0. it will reach at t=0+(delay of buffer 1 and 2).Now equation change to (θ+1+2)<(T+1+3+4).
+
+<img width="341" alt="image" src="https://user-images.githubusercontent.com/123488595/215311713-d8a06357-aad2-4a8c-bdb9-818cb5dd3bec.png">
+
+lets called "1+2"=∆1 and "1+3+4"=∆2 and (∆1-∆2)=skew
+
+<img width="339" alt="image" src="https://user-images.githubusercontent.com/123488595/215311928-7d0adab3-b496-4e9a-b323-3bead79df359.png">
+
+and here also, we have to consider the propogation skew (s) and uncertainty delay (US). so final equaltion becomes like, (θ+∆1)<(T+∆2-S-US).
+
+we can also say that (θ+∆1)= data arrival time and (T+∆2-S-US)=data required time.																	    
+If (Data required time)- (Data arrival time) = +ve then it is fine. If it is -Ve then it is called 'slack'.
+
+#### Hold timing analysis
+It is littel bit different then setup timing analysis. here we are sending the first pulse to the both launch FLop and capture flop.
+									
+Hold condition state that, Hold time (H)< combinational delay (θ).
+so, (θ>H).
+
+<img width="353" alt="image" src="https://user-images.githubusercontent.com/123488595/215312745-7f7f2c59-944c-4b32-aec7-89353379ad52.png">
+
+	
+Hence, finite time 'H' required for 'Qm' to reach Q i.e., internal delay of mux2= hold time.
+	
+Now, if we add the real time clock, the equation will be change. now equation becomes (θ+∆1)>(H+∆2).	
+	
+<img width="346" alt="image" src="https://user-images.githubusercontent.com/123488595/215312870-071553e5-9a03-48b4-90b0-c87dc1b5e26b.png">
+
+### Hold time analysis with real clock
+Now here also adding the Unsetainty delay(UH) value due to jitter. so, equation becomes like, (θ+∆1)>(H+∆2+UH).
+
+we can also say that (θ+∆1)= data arrival time and (H+∆2+UH)=data required time.
+
+If (Data arrival time) -(Data required time)= +ve then it is fine. If it is -Ve then it is called 'slack'.
+
+Now, applying all these things in out network.
+
+<img width="383" alt="image" src="https://user-images.githubusercontent.com/123488595/215313289-53a5035e-19fc-468b-9575-45ad60b0055c.png">
 
 
+# <h5 id="header-5">Day 5 -Final steps to build power distribution network</h5>	 
+## <h5 id="header-5_1"> Routing and design rule check(DRC)</h5>
+### Introduction to Maze Routing A lee As Algorithm
+Next stage in the physical design is the routing and DRC stage.
+
+Routing. by the name it is says that rout means make physical contact between Din1 and FF1 od stage 1. but algorithm wise,it understand that Din1 is the source and FF1 input pin is the target. so, algorthm has to find the best possible solution to connect the Din1 and FF1.
+	
+For that we use Maze Routing and Lee's algorithm. let's try to connect Block 1 and block 2 of stage 3. there are varies mathod to connect these blocks but we need best solution for the rout or connection. To understand that, we remove all other things.
+
+Algorithm create the routing gird at backend. here algirithm create two points. one is source and other is target. Now by using this routing grid, algorithm find the best way of routing. algorithm marks the adgecent grids of source. similarly again it will find the adgecent grids of the previos grids.similarly this process will runs continuosly.
+	
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/123488595/215314333-b2d30c66-2fa7-4e23-9608-55ffa5bbf4e7.png">
+
+### lee's algorithm conclusion. 
+The extanding process of adgecent grids are contionuous till it reaches to the target.
+
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/123488595/215317267-66bb89a2-e20a-4f02-a019-e1612a153412.png">
+
+there is many ways to reach the target. but the best possible way is 'L' shaped way.
+
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/123488595/215317372-d2448ec7-f0b9-4939-b459-220f03e5745a.png">
+	
+lets take another example for this routing.
+
+<img width="238" alt="image" src="https://user-images.githubusercontent.com/123488595/215317631-50b1dfc1-a267-40ff-999f-887cc868379d.png">
+	
+Now, we reouted all the blocks and the circuits looks like this,
+	
+<img width="280" alt="image" src="https://user-images.githubusercontent.com/123488595/215317685-bb12a004-5a9c-410e-a424-c8e3b4fc9414.png">
+
+### DRC(Design Rule check)
+While doing the routing, we need to follow certain rules for that. this is called DRC cleaning.
+	
+Lets take two parallel wires from the circuit for example,
+	
+<img width="373" alt="image" src="https://user-images.githubusercontent.com/123488595/215318203-aa583ad2-17f3-419c-a7ca-3e65d8b824ff.png">
+
+<ul>
+	<li><a> Rule 1</a></li>
+	</ul>
+Width of the wire should be minimum that derived from the optical wavelenth of lithography technique applied.
+
+<img width="119" alt="image" src="https://user-images.githubusercontent.com/123488595/215317905-6602a405-0d88-4693-b477-fec5e7e0b9a4.png">
+
+<ul>
+	<li><a> Rule 2</a></li>
+	</ul>
+The minimum pitch between two wire shold be this much.
+	
+<img width="117" alt="image" src="https://user-images.githubusercontent.com/123488595/215318038-4d485e52-1473-4358-a8bf-a3db86193600.png">
+
+<ul>
+	<li><a> Rule 3</a></li>
+	</ul>
+The wire spacing between two wires should be this much.
+	
+<img width="121" alt="image" src="https://user-images.githubusercontent.com/123488595/215318111-43d2caf1-bbe4-4d78-b130-90ddc2904b1b.png">
+	
+Let's take other part for understand the rules. basic problem in this types of wire is the signal short.
+
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/123488595/215318308-aef969c3-aef1-4fd1-9108-a0ba7c41f922.png">
+
+Solution of this signal short problem is take one of the wire and put it on the other metal layer. usually upper metal is wider than the lower metal.
+
+<img width="109" alt="image" src="https://user-images.githubusercontent.com/123488595/215318382-22d157c0-5888-43f2-b767-199b44c38de0.png">
+
+After this solution, we add two new DRC rules should be check.
+<ul>
+	<li><a> Rule 1</a></li>
+	</ul>
+via width should be some minimum value.
+	
+<img width="110" alt="image" src="https://user-images.githubusercontent.com/123488595/215318514-2c807302-a6ea-4848-8576-445b306d9b08.png">
+
+<ul>
+	<li><a> Rule 2</a></li>
+	</ul>
+Via spacing should be minimum this.
+<img width="112" alt="image" src="https://user-images.githubusercontent.com/123488595/215318529-efa1b973-4162-4e39-842c-fc54ae08b239.png">
+
+Next step is paracitic Extraction. so, the wire will get some resistance and capacitance value.
+
+<img width="283" alt="image" src="https://user-images.githubusercontent.com/123488595/215318616-92c611e8-d906-48ae-ac19-839680aeaba8.png">
+
+## <h5 id="header-5_2"> Power distribution network and routing</h5>
+ 
+	
+	
+## <h5 id="header-5_3"> Tritinroute features</h5>
+### TritonRoute feature 1 -Honors pre-processed route guide 
+<ul>
+	<li><a> It performs initial detail route.</a></li>
+	</ul>
+<ul>
+	<li><a> It attempts as much as possible to route within route guides.</a></li>
+	</ul>
+requierment of processed guides is 1)should have within unit lenth 2)should be in the preferred direction.
+	
+<img width="320" alt="image" src="https://user-images.githubusercontent.com/123488595/215319134-a09fe612-ba7d-4289-9493-484d967a133c.png">
+
+	
+<ul>
+	<li><a>
+Assumes route guides for each net satisfy inter-guide connectivity. </a></li>
+	</ul>
+If two guides are connected then 1) they are on the same metal layer with  touching edges. 2) they are on the neighbouring metal layers with a nonzero vertically overlapped area. 
+
+<ul>
+	<li><a>Assumes route guides for each net satisfy inter-guide connectivity. </a></li>
+	</ul>
+	
+### TritonRoute feature 2 & 3 - inter-guide connectivity and intra-layer & inter -layer routing
 
 
-
+	
+	
+	
+	
+	
+	
+	
 # <h6 id="header-6">References</h6>
 <ul>
 	<li><a>Workshop Github material</a></li>
