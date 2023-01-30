@@ -75,16 +75,23 @@
         <li><a href="#header-5_3">TritonRoute Features</a></li>
       </ul>
 </div>
+
+<div class="toc">
+  <ul>
+    <li><a href="#header-6">All commands to run the openlane flow</a></li>
+  </ul>
+</div>
+
 	
 <div class="toc">
   <ul>
-    <li><a href="#header-6">References</a></li>
+    <li><a href="#header-7">References</a></li>
   </ul>
 </div>
 
 <div class="toc">
   <ul>
-    <li><a href="#header-7">Acknowledgement</a></li>
+    <li><a href="#header-8">Acknowledgement</a></li>
   </ul>
 </div>
 
@@ -1775,9 +1782,81 @@ Next step is paracitic Extraction. so, the wire will get some resistance and cap
 <img width="283" alt="image" src="https://user-images.githubusercontent.com/123488595/215318616-92c611e8-d906-48ae-ac19-839680aeaba8.png">
 
 ## <h5 id="header-5_2"> Power distribution network and routing</h5>
- 
+### Leb steps to build power distribution network
+
+IS in case, our terminal is delected by some cause, the if we want the previos terminal once again then this steps should be followed:
+<ul>
+	<li><a>docker</a></li>
+	</ul>
+<ul>
+	<li><a>./flow.tcl -interactive</a></li>
+	</ul>
+<ul>
+	<li><a>package require openlane 0.9</a></li>
+	</ul>
+<ul>
+	<li><a>prep -design picorv32a -tag [run file name i.e., 20-01_22-23]</a></li>
+	</ul>
+
+Now to check the which was the last stage we perorm, the command is:"echo $::env(CURRENT_DEF)".
+
+So, till now we have done CTS and now we are going to do the routing. but before routing we have to generate the PDN(power distribution network)file.
+for that command is: "gen_pdn".
 	
+<img width="993" alt="image" src="https://user-images.githubusercontent.com/123488595/215484546-93b6e790-fd1b-420b-9018-e22419543426.png">
+
+Here we can see the total number of nodes on the net VGND and it is also says that Grid matrix is created successfully. here total connection between all PDN nodes establish in the net VGND.
 	
+Now, till here we have picorv32a chip, and it needs the power. so it will get power from VDD and GND pads. From the pads, power goes to the tracks and from the tracks, the cells get power.
+
+### Lab steps from power straps to standerd cell power
+To understan this, take an example here,
+
+<img width="340" alt="image" src="https://user-images.githubusercontent.com/123488595/215486262-11b4bef8-ec09-4ba0-a6b7-61e30305594d.png">
+
+In this figure, the green box is available is let say picorv32a chip. And the yellow, red and blue boxes which are the shown on the outside of the frame are the I/O pins and the power and ground pads. in this pads, the corner ones are called corner pads. 
+	
+Red pads are the power pads and Blue pads are ground pads.
+	
+Power is transfered to the rings from the pads through Via which is shown by black dots on the cross section points of the ring and pads.
+
+Now we need to insure that the power is transfered from the ring to the chip. for that we have vertiocal and horizontal tracks which are also shown by the red and blue color.
+	
+NOw, we need to supply power to the standerd cell (Which are shown by rectangular white boxes) from these tracks. this is done by horizontal small connections shown in the figure.
+
+So, in a lab we have done this all the things till power distribution.
+	
+Now next and the final step is routing.
+	
+### Basic and Global detailed routing and configure TritonRoute
+Now current def.file is change to pdn.def from the cts.def. pdn.def file is now in the "runs/29-01_22-23/tem/floorplan/pdn.def".
+
+In the routing process we are focusing on the routing strategy. there are 5 routing strategies are there. 0,1,2,3 and 14. routing is done in the TritonRoute engine. we have to specifies the strategy for the routing. for example if we ser the strategy to 14 then "TritonRoute14" strategy is used. 
+
+If we set the TritonRouting strategy to "0" then it want converge to a 0 TRC routing. but because of this we will improve in the memory requirement and run time. if we use TritonRoute14 then the run time will be approximate 1 hours. but in the TritonRoute0 it will be around the 30 minutes. here we use the "TritonRoute0". so in our flow first we check the routing strategy by the command "echo $::env(ROUTING_STRATEGY)". if it is "0" then it is fine, otherwise we have to change the strategy to "0".
+
+Now the last thing remains is routing. for that command is :"run_routing".
+
+The routing process is very complex.So, total routing is devided into two part.
+	
+<ul>
+	<li><a>Fast route (Global route)</a></li>
+	</ul>	
+<ul>
+	<li><a>Detailed route</a></li>
+	</ul>
+
+<img width="532" alt="image" src="https://user-images.githubusercontent.com/123488595/215496401-618892e5-51d9-44c9-a75b-2e6b7961a922.png">
+
+In the Global route, the routing region is devided into the rectangular grids cells as shown in the figure. and it is represented as 3D routing graph. Global route is done by FAST route engine.The detailed route is done by TritonRoute engine.
+	
+As shown in the figure, A,B,C,D are four pins which we want to connects through routing. and this whole image of A,B,C,D show the nets.
+
+Now, the routing is successfully done.
+
+<img width="993" alt="image" src="https://user-images.githubusercontent.com/123488595/215498852-c81a5999-9c1e-44f6-a819-dab9e7de5874.png">
+
+
 ## <h5 id="header-5_3"> Tritinroute features</h5>
 ### TritonRoute feature 1 -Honors pre-processed route guide
 <img width="378" alt="image" src="https://user-images.githubusercontent.com/123488595/215336408-7194a72e-03db-4946-bebe-f997e1e88c1e.png">
@@ -1855,7 +1934,47 @@ Here in the figure shown above, the illustration of access points:
 
 The algorithm says that for each APCs we have to find the cost associated with it and we have to do minimum spaning tree betweem the APCs and the cost. finally the conclusion of the algorithm is that we have to find the minimul and the most optimal poits between two APCs.
 	
-# <h6 id="header-6">References</h6>
+Now, remaning things is the post routing STA analysis. for that the first goal is to extract the perasetic (SPEF). This SPEF extraction is done outside the openlane because openlane does not have SPEF extraction tool.
+
+The .spef file can be found under the routing folder under the results folder.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215507584-4da3170a-dc62-4b2b-9ed9-b2459eeb000e.png">
+
+The following command can be used to stream in the generated GDSII file.
+
+"run_magic"
+
+Now the gds file will be generated and it is stored in the magic folder under results folder.
+	
+<img width="281" alt="image" src="https://user-images.githubusercontent.com/123488595/215511075-54270f6a-3cbd-4ca4-b057-6cafc60102ad.png">
+
+
+# <h6 id="header-6"> All commands to run the openlane flow </h6>
+
+docker
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+
+echo $::env ([Varible]) // our case = SYNTH_STRATEGY
+// change the STRATEGY
+
+set ::env(SYNTH_STRATEGY) "DELAY 0"
+
+run_synthesis
+init_floorplan
+place_io
+global_placement_or
+detailed_placement
+tap_decap_or
+detailed_placement
+run_cts
+gen_pdn
+run_routing
+run_magic
+	
+# <h7 id="header-7">References</h7>
+	
 <ul>
 	<li><a>Workshop Github material</a></li>
 	</ul>
@@ -1875,5 +1994,6 @@ The algorithm says that for each APCs we have to find the cost associated with i
 	<li><a>https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/Introduction-to-Industrial-Physical-Design-Flow.pdf</a></li>
 	</ul>
 
-# <h7 id="header-7">Acknowledgement</h7>
+# <h8 id="header-8">Acknowledgement</h8>
+	
 I would like to express my special thanks of gratitude to Mr. kunal ghosh (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and Mr.Nickson Jose and Mr. SUMANTO KAR (Sr. Project Technical Assistant, IIT BOMBAY) for their guidence and temendous presenting this workshop on Advance Physical Design using OpenLANE/Sky130. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the physical chip design using OpenLANE software and many more.
