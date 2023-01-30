@@ -1575,11 +1575,14 @@ So, clock period seted as 2.473 nsec.
 	
 then checking the max cap value, by command : "echo $::env(CTS_MAX_CAP)". and it is setted as 1.53169
 	
-Now checking the branch buffer cells by command :"echo $::env(CTS_CLK_BUFFER_LIST)".
+Now checking the branch buffer cells by command :"echo $::env(CTS_CLK_BUFFER_LIST)". and these are the buffer cells are listed there "sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8".
 	
+And last cheching the root buffer by command: "echo $::env(CTS_ROOT_BUFFER)". So, we find that this "sky130_fd_sc_hd__clkbuf_16
+" buffer is root buffer.
 	
+<img width="296" alt="image" src="https://user-images.githubusercontent.com/123488595/215363714-42c57e54-b78e-4a33-9d3b-11c1e6b44266.png">
 
-	
+
 ## <h4 id="header-4_4">Timing analysis with real clocks using openSTA</h4>
 ### Setup timing analysis using real clocks
 With real clock, circuit looks littel bit different then ideal clock. Here the bufferes and wires are added to the circuts.
@@ -1623,6 +1626,48 @@ Now, applying all these things in out network.
 
 <img width="383" alt="image" src="https://user-images.githubusercontent.com/123488595/215313289-53a5035e-19fc-468b-9575-45ad60b0055c.png">
 
+### Lab steps to analyze timing with real clock using OpenSTA
+let's open the OPENROAD tool in the flow by "openroad" command.
+
+our objective is to do analysis of the clock tree.
+	
+we are analysin this in the OpenROAD because OpenSTA is already built in the OpenROAD. In OpenROAD the timing analysis is done in a different way. first we have to create "db" and "db" is created in a "lef" and "def" file.
+	
+Now let's create the DB. To create the DB, first we have to read the lrf file by comand "% read_lef /openLANE_flow/designs/picorv32a/runs/29-01_22-23/tmp/merged.lef".
+	
+Then we read the "def" file by command: "read_def /openLANE_flow/designs/picorv32a/runs/29-01_22-23/results/cts/picorv32a.cts.def".
+	
+NOw to create the DB  write the command "write_db pico_cts.db"
+	
+NOW read this db file by command "read_db pico_cts.db"
+	
+then read the verilog file by applying the command "read_verilog /openLANE_flow/designs/picorv32a/runs/29-01_22-23/results/synthesis/picorv32a.synthesis_cts.v"
+	
+then read the library (max) by this command:"read_liberty -max $::env(LIB_FASTEST)".
+	
+similarly read the library (min) by this command: "".
+	
+Now read the sdc file by this command: "read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc"
+	
+now set the clocks by this command:"set_propagated_clock [all_clocks]"
+	
+there reports the checks by this command: "report_checks -path_delay min_max -format full_clock_expanded -digits 4".
+	
+so after running this we can see that the slack is positive for hold and setup both. and also we can notice the data required time and data arroval time also.
+	
+
+
+### Lab steps to execute openSTA with right timing libraries and CTS assignment
+TritonCTS is right now built according to optimize fully according to one corner and we had bulid the clock tree for typical corner. and library also min and max. so we made tree according to typical corner but we analize it according to one corner. so, analysis become incorrect.
+	
+so, first we exits from the openroad by using "exit" command and we have to include the typical library for typical analysis. for that we have to open the "openroad" again and add this typical library. now we don't need to add lef and def file here. now commands for the adding a file is:
+	
+read_db pico_cts.db
+	
+read_verilog /openLANE_flow/designs/picorv32a/runs/
+
+	
+	
 
 # <h5 id="header-5">Day 5 -Final steps to build power distribution network</h5>	 
 ## <h5 id="header-5_1"> Routing and design rule check(DRC)</h5>
