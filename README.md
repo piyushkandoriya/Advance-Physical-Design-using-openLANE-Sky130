@@ -1689,12 +1689,6 @@ Now checking the branch buffer cells by command :"echo $::env(CTS_CLK_BUFFER_LIS
 
 when openlane are making the CTS, at that time this buffers are place in the clock path to meet the skew value. and we always want skew value is maximum to the 10% of clock period.
 	
-### Lab steps to observe impact of bigger CTS buffers on setup and hold timing
-
-	
-	
-	
-	
 
 # <h5 id="header-5">Day 5 -Final steps to build power distribution network</h5>	 
 ## <h5 id="header-5_1"> Routing and design rule check(DRC)</h5>
