@@ -1945,10 +1945,14 @@ The following command can be used to stream in the generated GDSII file.
 "run_magic"
 
 Now the gds file will be generated and it is stored in the magic folder under results folder.
+
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/215541691-d6ff826e-ae7d-48e7-9dbc-c224d2995511.png">
+
+And the generated layout is,
+
+<img width="512" alt="image" src="https://user-images.githubusercontent.com/123488595/215542186-baa6a395-4728-4e11-af67-18eeb336f36b.png">
+
 	
-<img width="281" alt="image" src="https://user-images.githubusercontent.com/123488595/215511075-54270f6a-3cbd-4ca4-b057-6cafc60102ad.png">
-
-
 # <h6 id="header-6"> All commands to run the openlane flow </h6>
 
 docker
@@ -1995,5 +1999,4 @@ run_magic
 	</ul>
 
 # <h8 id="header-8">Acknowledgement</h8>
-	
 I would like to express my special thanks of gratitude to Mr. kunal ghosh (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and Mr.Nickson Jose and Mr. SUMANTO KAR (Sr. Project Technical Assistant, IIT BOMBAY) for their guidence and temendous presenting this workshop on Advance Physical Design using OpenLANE/Sky130. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the physical chip design using OpenLANE software and many more.
