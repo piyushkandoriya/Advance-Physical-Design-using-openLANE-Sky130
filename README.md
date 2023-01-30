@@ -1567,13 +1567,14 @@ Now les's check the "or_cts.tcl" file. inside this we can see the few switches.
 
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/215362238-03fec719-6a58-4e32-82c9-a44c1daea771.png">
 
-Now lets check what the library does. for this command is "echo $::env(LIB_SYNTH_COMPLETE)" In the main flow. then again apply command :"echo $::env(LIB_TYPICAL)"
+Now lets check what the library does. 
+For this command is "echo $::env(LIB_SYNTH_COMPLETE)" In the main flow. then again apply command :"echo $::env(LIB_TYPICAL)"
 	
 Now checking the clock period of this by command: "echo $::env(SYNTH_MAX_TRAN)"
 	
 So, clock period seted as 2.473 nsec.
 	
-then checking the max cap value, by command : "echo $::env(CTS_MAX_CAP)". and it is setted as 1.53169
+Then checking the max cap value, by command : "echo $::env(CTS_MAX_CAP)". and it is setted as 1.53169
 	
 Now checking the branch buffer cells by command :"echo $::env(CTS_CLK_BUFFER_LIST)". and these are the buffer cells are listed there "sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8".
 	
@@ -1591,11 +1592,11 @@ Here, due to buffer, clock signals are not reaching the flop at t=0. it will rea
 
 <img width="341" alt="image" src="https://user-images.githubusercontent.com/123488595/215311713-d8a06357-aad2-4a8c-bdb9-818cb5dd3bec.png">
 
-lets called "1+2"=∆1 and "1+3+4"=∆2 and (∆1-∆2)=skew
+Let's called "1+2"=∆1 and "1+3+4"=∆2 and (∆1-∆2)=skew
 
 <img width="339" alt="image" src="https://user-images.githubusercontent.com/123488595/215311928-7d0adab3-b496-4e9a-b323-3bead79df359.png">
 
-and here also, we have to consider the propogation skew (s) and uncertainty delay (US). so final equaltion becomes like, (θ+∆1)<(T+∆2-S-US).
+And here also, we have to consider the propogation skew (s) and uncertainty delay (US). so final equaltion becomes like, (θ+∆1)<(T+∆2-S-US).
 
 we can also say that (θ+∆1)= data arrival time and (T+∆2-S-US)=data required time.																	    
 If (Data required time)- (Data arrival time) = +ve then it is fine. If it is -Ve then it is called 'slack'.
@@ -1604,7 +1605,7 @@ If (Data required time)- (Data arrival time) = +ve then it is fine. If it is -Ve
 It is littel bit different then setup timing analysis. here we are sending the first pulse to the both launch FLop and capture flop.
 									
 Hold condition state that, Hold time (H)< combinational delay (θ).
-so, (θ>H).
+So, (θ>H).
 
 <img width="353" alt="image" src="https://user-images.githubusercontent.com/123488595/215312745-7f7f2c59-944c-4b32-aec7-89353379ad52.png">
 
