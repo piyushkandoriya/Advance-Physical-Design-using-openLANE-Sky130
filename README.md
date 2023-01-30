@@ -1452,7 +1452,7 @@ So, we can write that the internal delay of the MUX1 = set up time(S).
 So, now θ<T becomes θ<(T-S).
 
 	
-### Introduction to clock hitter and uncertainty
+### Introduction to clock jitter and uncertainty
 Let's bring one more practical scenario here. clock is taking from the some clock source or PLL. So, because of some delay from the practical source of clock or PLL, clock pulse will not comes exacly at t=0 or at t=T. that in built variation of the clock is called jitter.
 				     
 <img width="327" alt="image" src="https://user-images.githubusercontent.com/123488595/215296132-a05d4f02-f607-43b3-9fb1-9e02eba33b09.png">
