@@ -1966,15 +1966,25 @@ echo $::env ([Varible]) // our case = SYNTH_STRATEGY
 set ::env(SYNTH_STRATEGY) "DELAY 0"
 
 run_synthesis
+	
 init_floorplan
+	
 place_io
+	
 global_placement_or
+	
 detailed_placement
+	
 tap_decap_or
+	
 detailed_placement
+	
 run_cts
+	
 gen_pdn
+	
 run_routing
+	
 run_magic
 	
 # <h7 id="header-7">References</h7>
