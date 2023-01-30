@@ -1645,7 +1645,7 @@ then read the verilog file by applying the command "read_verilog /openLANE_flow/
 	
 then read the library (max) by this command:"read_liberty -max $::env(LIB_FASTEST)".
 	
-similarly read the library (min) by this command: "".
+similarly read the library (min) by this command: "read_liberty -min $::env(LIB_SLOWEST)".
 	
 Now read the sdc file by this command: "read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc"
 	
@@ -1654,8 +1654,12 @@ now set the clocks by this command:"set_propagated_clock [all_clocks]"
 there reports the checks by this command: "report_checks -path_delay min_max -format full_clock_expanded -digits 4".
 	
 so after running this we can see that the slack is positive for hold and setup both. and also we can notice the data required time and data arroval time also.
-	
 
+So, the Hold slack = 1.6982nsec because here we can see that (arrivel time) >(required time).
+	
+<img width="236" alt="image" src="https://user-images.githubusercontent.com/123488595/215372600-9a310dbe-1b7e-477a-ab17-32864a69d35c.png">
+
+NOw setup slack = 0.9457nsec because here we can see that (required time)>(arrival time).
 
 ### Lab steps to execute openSTA with right timing libraries and CTS assignment
 TritonCTS is right now built according to optimize fully according to one corner and we had bulid the clock tree for typical corner. and library also min and max. so we made tree according to typical corner but we analize it according to one corner. so, analysis become incorrect.
@@ -1664,8 +1668,30 @@ so, first we exits from the openroad by using "exit" command and we have to incl
 	
 read_db pico_cts.db
 	
-read_verilog /openLANE_flow/designs/picorv32a/runs/
+read_verilog /openLANE_flow/designs/picorv32a/runs/29-01_22-23/results/synthesis/picorv32a.synthesis_cts.v
 
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+link_design picorv32a
+
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+set_propagated_clock [all_clocks]
+
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+
+slack for typical coirner= 0.2429nsec
+	
+<img width="235" alt="image" src="https://user-images.githubusercontent.com/123488595/215376738-807c2aa9-5b7a-4e6d-b830-82b6b8f72820.png">
+
+Now checking the branch buffer cells by command :"echo $::env(CTS_CLK_BUFFER_LIST)". and these are the buffer cells are listed there "sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8".
+
+when openlane are making the CTS, at that time this buffers are place in the clock path to meet the skew value. and we always want skew value is maximum to the 10% of clock period.
+	
+### Lab steps to observe impact of bigger CTS buffers on setup and hold timing
+
+	
+	
 	
 	
 
