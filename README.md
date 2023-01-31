@@ -1961,7 +1961,7 @@ docker
 
 package require openlane 0.9
 
-prep -design interactive
+prep -design picorv32a 
 
 set ::env(SYNTH_STRATEGY) "DELAY 0"
 
