@@ -1956,12 +1956,12 @@ And the generated layout is,
 # <h6 id="header-6"> All commands to run the openlane flow </h6>
 
 docker
-./flow.tcl -interactive
-package require openlane 0.9
-prep -design picorv32a
 
-echo $::env ([Varible]) // our case = SYNTH_STRATEGY
-// change the STRATEGY
+./flow.tcl -interactive
+
+package require openlane 0.9
+
+prep -design interactive
 
 set ::env(SYNTH_STRATEGY) "DELAY 0"
 
